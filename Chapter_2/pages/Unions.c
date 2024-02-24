@@ -10,9 +10,9 @@ union {
         int type;
         int intnode;
     } ni;
-    /* struct nf inside union u 
-     * can pack both struct n and struct ni thus,
-     * using additional padding, making it 16 bytes */
+    /* struct nf inside union u
+       can pack both struct n and struct ni thus,
+       using additional padding, making it 16 bytes */
     struct {
         int type;
    //     char pad[4];
@@ -68,3 +68,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+

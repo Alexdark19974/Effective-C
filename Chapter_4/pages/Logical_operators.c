@@ -15,11 +15,10 @@ bool prepare_file();
 int main(void)
 {
     /* Evaluation for "&&" and "||" is guaranteed to be left to right
-     * Expressions with operators return either 1 or 0
-     * Both operators short-circuit:
-     * If the 1st operand of || is true, expressions is true, || returns 1
-     * If th1 1st operand of && is false, expressions is false, && returns 0
-     * */
+       Expressions with operators return either 1 or 0
+       Both operators short-circuit:
+       If the 1st operand of || is true, expressions is true, || returns 1
+       If th1 1st operand of && is false, expressions is false, && returns 0 */
     int *ptr = NULL;
     int ret = 0;
 
@@ -35,9 +34,8 @@ int main(void)
 
     {
         /* If left operand is 1, the expression short-circuits and doesn't evalue the right operand
-         * if it is 0, the right operand is evaluated
-         * if both are 0, the subexpression in if-statement is not executed;
-         * */
+           if it is 0, the right operand is evaluated
+           if both are 0, the subexpression in if-statement is not executed; */
         if (is_file_ready() || prepare_file()) goto enough;
     }
 
@@ -46,8 +44,7 @@ int main(void)
         int i = 17;
 
         /* Be careful when there are side effects in the second operand of &&
-         * Is this what you really wanted?
-         * */
+           Is this what you really wanted? */
         if ( (i >= 0) &&  ( (i++) <= max) )  { // could be written as (i >= 0 && i++ <= max) but not as easy to read
             puts("Something happened");
         }
@@ -74,3 +71,4 @@ bool prepare_file(void)
 {
     return true;
 }
+

@@ -6,3 +6,4 @@
 bool is_prime(unsigned long long n, unsigned k);
 
 #endif // PRIMETES_IS_PRIME_H
+

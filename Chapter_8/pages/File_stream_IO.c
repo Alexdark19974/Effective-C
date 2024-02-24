@@ -5,19 +5,17 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-/*
-    Chapter 8: INPUT/OUTPUT
-        Subchapter: Opening and Creating Files;
-            1)  The fopen Function; Buffering;
-            2) The POSIX open Function;
-        Subchapter: Closing Files; 
-            1) The fclose Function;
-            2) The POSIX close Function;
-        Subchapter:
-            1) Reading and Writing Characters and Lines;
-            2) Stream Flushing;
-    Pages: 151 - 158
-*/
+/* Chapter 8: INPUT/OUTPUT
+    Subchapter: Opening and Creating Files;
+        1)  The fopen Function; Buffering;
+        2) The POSIX open Function;
+    Subchapter: Closing Files;
+        1) The fclose Function;
+        2) The POSIX close Function;
+    Subchapter:
+        1) Reading and Writing Characters and Lines;
+        2) Stream Flushing;
+    Pages: 151 - 158 */
 
 void open_create_close_file(void);
 void f_family_funcs(void);
@@ -33,8 +31,8 @@ int main(void)
 
 void open_create_close_file(void)
 {
-    /* When you open or create a file, it's associated with a stream 
-     * Remember, stream is just an abstraction. 
+    /* When you open or create a file, it's associated with a stream
+     * Remember, stream is just an abstraction.
      * It is represented by FILE in C Standard API
      * And a file descriptor for POSIX API */
 
@@ -166,7 +164,7 @@ void f_family_funcs(void)
 
     fclose(fp);
 
-    /* Before diving into posix functions, remeber to read on f-family funcs in manpage 
+    /* Before diving into posix functions, remeber to read on f-family funcs in manpage
      * Because every function may have features and return values, that are unique to them */
 
     puts("\n---------- C Standard Library -----------");
@@ -182,19 +180,19 @@ void posix_family_funcs(void)
 
     puts("\n------------ POSIX API ----------");
 
-    /* Instead of returning a pointer to FILE, open() returns a file descriptor 
+    /* Instead of returning a pointer to FILE, open() returns a file descriptor
      * A file descriptor - is a small positive number that refers to the struct describing the file */
 
-    /* open() allows you to do what you do when using fopen(), and some. 
+    /* open() allows you to do what you do when using fopen(), and some.
      * int open( const char *path, int oflag, ... */
 
     fd = open("./some_file", O_RDWR /*|*O_CREAT , S_IRUSR | S_IWUSR | S_IXUSR*/);
-    
+
     /* The second argument is oflag that deals with access mode and file status
      * Some of the flags for access mode:
-     * O_RDONLY - open for reading only 
+     * O_RDONLY - open for reading only
      * O_WRONLY - open for writing only
-     * O_RDWR - open for reading and writing 
+     * O_RDWR - open for reading and writing
      *
      * Only one of them can be specified
      *
@@ -202,7 +200,7 @@ void posix_family_funcs(void)
        O_APPEND - set the file position of the end of file
        O_TRUNC - truncate the length to 0
        O_CREAT - create a file
-       
+
        They can be combined with access mode flag to change the behavior of an opened file
      * */
 
@@ -233,3 +231,4 @@ void posix_family_funcs(void)
 
     puts("------------ POSIX API ----------");
 }
+

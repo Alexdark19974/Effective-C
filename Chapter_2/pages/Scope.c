@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    Chapter 2: Object, Functions, and Types
-        Subchapter: Scope
-    Pages: 18 - 19
-*/
+/* Chapter 2: Object, Functions, and Types
+    Subchapter: Scope
+   Pages: 18 - 19 */
 
 int j;  // file scope of j begins
 
-void f(int i)                       // block scope of i begins 
+void f(int i)                       // block scope of i begins
 {
     int j = 1;                      // block scope of j begins; hides file-scope j
     i++;
@@ -26,10 +24,10 @@ int main(void)
 {
     /* Scope delimits the contiguous region where object can be accessed */
     /* There are 4 types of scope:
-     * 1) file scope; // accessed from anywhere including from other files
-     * 2) block scope; // accessed within the block or compound statement
-     * 3) function prototype; // accessed within the function prototype
-     * 4) function scope; // accesses from the opening to the closing brackets */
+        1) file scope; // accessed from anywhere including from other files
+        2) block scope; // accessed within the block or compound statement
+        3) function prototype; // accessed within the function prototype
+        4) function scope; // accesses from the opening to the closing brackets */
 
     int i = 0; // block scope (main() {})
     j = 3;                          //  j has file scope, akin to "extern j;"

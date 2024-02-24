@@ -25,8 +25,8 @@ int main (void) {
     printf("ret = %d\n", *ret);
 
     non_typedef_ptr = func_ptr;
- 
-    non_typedef_ptr(); 
+
+    non_typedef_ptr();
     printf("ret = %d\n", *ret);
 
     ret = (**********************non_typedef_ptr)(); // non_typedef_ptr will just keep dereferencing to itself, nothing criminal here;

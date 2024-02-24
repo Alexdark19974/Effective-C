@@ -3,11 +3,9 @@
 #include <string.h>
 #define MAX(a,b) (a < b) ? b : a // (a < b) is evaluated first, then either b or a
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: Conditional Operator
-    Page: 76
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: Conditional Operator
+   Page: 76 */
 
 int main(void)
 {
@@ -20,3 +18,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+

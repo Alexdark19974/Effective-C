@@ -1,3 +1,0 @@
-Hi, World!
-buf =  1  2 11
-

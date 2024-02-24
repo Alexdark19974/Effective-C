@@ -4,8 +4,8 @@
 #include <limits.h>
 
 /* Change the find_element function from Listing 5-13 to return
- * The position of the key in a.
- * Don't forget to return an error indication if the key is not found */
+   The position of the key in a.
+   Don't forget to return an error indication if the key is not found */
 
 size_t find_element(size_t len, char arr[len], int key) {
     size_t pos = (size_t)-1;
@@ -41,3 +41,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+

@@ -6,15 +6,13 @@
 #include <limits.h>
 #include <float.h>
 
-/*  
-    Chapter 3: Arithmetiic Types
-        Subchapter: Floating-point
-            1) Floating-Point Types;
-            2) Floating-Point Arithmetic;
-            3) Floating-Point Values;
-            4) Floating-Point Constants;
-    pages: 45 - 49
-*/
+/* Chapter 3: Arithmetiic Types
+    Subchapter: Floating-point
+        1) Floating-Point Types;
+        2) Floating-Point Arithmetic;
+        3) Floating-Point Values;
+        4) Floating-Point Constants;
+    Pages: 45 - 49 */
 
 void floating_point_constants(void);
 void test_for_subnormal(void);
@@ -36,21 +34,21 @@ void floating_point_constants(void)
 {
     /* All floating points have a type. */
     /* If unsiffixed, the type is doubled (unless the value is assigned to variable of type float )
-     * Suffixes are:
-     * 1) 10.0f/F; float
-     * 2) 10.0l/ L; (long double) 
-     * 3) 10.0 double */
+       Suffixes are:
+       1) 10.0f/F; float
+       2) 10.0l/ L; (long double)
+       3) 10.0 double */
     puts("\n---------- test for  floating point_constants  ----------");
-    
+
     float fl_val = 15.75f;
     printf("fl_val = %f\n", fl_val);
 
     fl_val = 1.575E1;
     printf("fl_val = %f\n", fl_val);
-    
+
     fl_val = 1575e-2;
     printf("fl_val = %f\n", fl_val);
-    
+
     fl_val = -2.5e-3;
     printf("fl_val = %f\n", fl_val);
 
@@ -109,14 +107,14 @@ void test_for_infinity(void)
     printf("DBL_MAX = %f\n", dbl_val);
 
     flt_val = dbl_val; // an overflow?
-    
+
     printf("DBL_MAX assigned to float flat_val = %f\n", flt_val); // inf val
 
     flt_val = 123.456;
 
     printf(" flat_val divided by zero is %f\n", flt_val / 0.0);
     printf(" flat_val divided by negative zero is %f\n", flt_val / -0.0);
-    
+
     {
         float flt_val = INFINITY;
         float flt_val2 = NAN;
@@ -142,7 +140,7 @@ void test_for_nan(void)
 
     flt_val = 3.0f;
     printf(" 3.0 / 0.0 = %f\n", flt_val/0.0f);     // will produce inf (division of non-zero floating numbers by zero) with a warning
-    
+
     flt_val = NAN;
     printf("flt_val is %f\n", flt_val);
 
@@ -187,8 +185,8 @@ void test_for_inf_nan_and_others(void)
 void floating_point_types(void)
 {
     /* C has 3 floating-point types: float, double, and long double */
-    /* Floating-point representation is a technique used to 
-     * To encode numbers with a base number and an exponent */
+    /* Floating-point representation is a technique used to
+       To encode numbers with a base number and an exponent */
 
     /* 123.456 -> 1.23456 * 10^2 */
 
@@ -198,7 +196,7 @@ void floating_point_types(void)
     /* |        32 bits          |*/
 
     float fl = 123.456;
-    
+
     /* double: double precision */
     /*    s       e        sig */
     /* |1 bit| |11 bits| |52 bits| */
@@ -217,7 +215,7 @@ void floating_point_types(void)
     /* 123.456 -> 1.23456 * 10^2 */
 
     /* Positive / negative Values that are close to 0 are considered subnormal
-     * The leading bit is 0 (for normalized numbers, 1 is the implicit leading bit of the significand */
+       The leading bit is 0 (for normalized numbers, 1 is the implicit leading bit of the significand */
     test_for_subnormal();
 
     /* floats can also represent such values as NaN (not a number), positive and negative infinity */

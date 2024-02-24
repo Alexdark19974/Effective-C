@@ -4,11 +4,9 @@
 #include <stddef.h>
 #include <assert.h>
 
-/*
-    Chapter 2: Expressions and Operators
-        Subchapter: _Alignof Operator
-    Page: 76
-*/
+/* Chapter 2: Expressions and Operators
+    Subchapter: _Alignof Operator
+   Page: 76 */
 
 int main(void)
 {
@@ -22,3 +20,4 @@ int main(void)
     printf("Alignment of max_align_t = %zu\n", alignof(max_align_t));
     return EXIT_SUCCESS;
 }
+

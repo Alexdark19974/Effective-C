@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    Chapter 8: INPUT/OUTPUT
-        Subchapter: Setting the Position in a File;
-        Subchapter: Removing and Renaming Files;
-        Subchapter: Using Temporary Files;
-    Pages: 158 - 162
-*/
+/* Chapter 8: INPUT/OUTPUT
+    Subchapter: Setting the Position in a File;
+    Subchapter: Removing and Renaming Files;
+    Subchapter: Using Temporary Files;
+   Pages: 158 - 162 */
 
 void position_in_a_file(void);
 void showcase_fseek_ftell(void);
@@ -20,13 +18,12 @@ int main(void) {
 void position_in_a_file(void)
 {
     /* C Standard libraries allow you to put the indicatior at any position in a file */
-    /* To do so, and to there is a list of functions: 
-     * fseek();
-     * ftell();
-     * rewind();
-     * fgetpos();
-     * fsetpos();
-     * */
+    /* To do so, and to there is a list of functions:
+       fseek();
+       ftell();
+       rewind();
+       fgetpos();
+       fsetpos(); */
 
     /* We will deal with fseek() and ftell() first */
     showcase_fseek_ftell();
@@ -66,7 +63,7 @@ void showcase_fseek_ftell(void)
     }
     printf("fpos = %ld\n", fpos);
 
-    /* ftell() and fseek() are limited by offset type (long int) 
+    /* ftell() and fseek() are limited by offset type (long int)
      * Meaning that the offset cannot be more than LONG_MAX */
 
     /* Newer functions fgetpos and fsetpos remedy this */
@@ -92,7 +89,7 @@ void showcase_fgetpos_fsetpos(void)
     /* fsetpos/fgetpos allow us to work with an arbitary offset of a file, with no constraints */
 
     /* some API never use a file position to move.
-     * In this case, using offsets is the only option */
+       In this case, using offsets is the only option */
 
     if (fgetpos(fp, &pos) != 0) {
         perror("fgetpos");
@@ -127,3 +124,4 @@ exit:
         exit(EXIT_FAILURE);
     }
 }
+

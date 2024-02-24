@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* 
-    Chapter 4: Expressions and Operators
-        Subchapter: Comma Operator
-    Page: 78
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: Comma Operator
+   Page: 78 */
 
 void do_something(int a, int b, int c); // comma as a separator
 
@@ -16,10 +14,10 @@ int main(void)
 
     /* evaluate i, then increment it, then evaluate j, then decrement it */
     i++, j--; // comma as an operator
-    
+
     c = i, j; // j is discarded
     printf("c = %d\n", c);
-   
+
     /* parentheses force i and j to be evaluated first */
     c = (i, j); // return value of comma operator is the right-most operand
     printf("c = %d\n", c);
@@ -33,3 +31,4 @@ void do_something(int a, int b, int c)
 {
     ;
 }
+

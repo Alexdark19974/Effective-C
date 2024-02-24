@@ -4,26 +4,19 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-
-#if defined DEBUG
-static bool debug = true;
 #include "debug.h"
-#else
-static bool debug = false;
-#include "debug.h"
-#endif
 
 /* Exercise 1:
   1) Analyze the program using static and dynamic analSyses;
   2) Provide Unit testing;
   3) Debug by using different compile flags and gdb untility.
-  4) Break the program down into several components, 
+  4) Break the program down into several components,
      implementing public and private interfaces if possible
 
-(Write a program that can take redirect an arbitary number of 
-'|' terminated by '<' or '>' or using predefined streams ".
- * Support redirection of standard input/output (< and > ) operations too
- * Example: echo "Hello Robert" | sed "s/Hello/Hi/" | sed "s/Robert/robot/" ) */
+    (Write a program that can take redirect an arbitary number of
+    '|' terminated by '<' or '>' or using predefined streams ".
+    Support redirection of standard input/output (< and > ) operations too
+    Example: echo "Hello Robert" | sed "s/Hello/Hi/" | sed "s/Robert/robot/" ) */
 
 int main(int argc, char **argv)
 {
@@ -34,7 +27,7 @@ int main(int argc, char **argv)
     if (parse_command_line_arguments(argv, argc, &redir_sym, &args_num) == 0) {
         PRINT_ERR(
             parse_command_line_arguments,
-            "Failed to process command line arguments. arg_num = %d",
+            "Failed to process command line arguments. arg_num = %d\n",
             args_num
         );
         status = EXIT_FAILURE;
@@ -57,7 +50,6 @@ int main(int argc, char **argv)
             }
         } else {
             DEBUG_PRINT(
-                stdout, 
                 "%s\n",
                 "Parent is waiting for the child to return\n"
             );
@@ -69,7 +61,6 @@ int main(int argc, char **argv)
                 status = EXIT_FAILURE;
             } else
                 DEBUG_PRINT(
-                    stdout,
                     "%s\n",
                     "Child returned"
                 );
@@ -78,3 +69,4 @@ int main(int argc, char **argv)
 fail:
     return status;
 }
+

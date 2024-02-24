@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    Chapter 2: Object, Functions, and Types
-        Subchapter: Type Qualifiers
-    Pages: 32- 34
-*/
+/* Chapter 2: Object, Functions, and Types
+    Subchapter: Type Qualifiers
+   Pages: 32- 34 */
 
 void type_qualifiers(void);
 void const_qualifier(void);
@@ -50,7 +48,7 @@ void const_qualifier(void)
 void cast_const_away(void)
 {
     /* const qualifier can be cast away if a pointer points to const object
-     * But the original object is not const-qualified */
+       But the original object is not const-qualified */
     int i = 12;
     const int j = 12;
     const int *ip = &i;
@@ -79,8 +77,8 @@ void volatile_qualifier(void)
 void restrict_qualifier(void)
 {
     /* restrict-qualified objects promote optimization */
-    /* restrict tells the compiler that a restrict-qualified object will not 
-     * overlap with another object in terms of memory location */
+    /* restrict tells the compiler that a restrict-qualified object will not
+       overlap with another object in terms of memory location */
     typedef void func(unsigned int, int * restrict, int * restrict);
     int src[2] = {1 , 2};
     int dest[2] = {0};
@@ -96,3 +94,4 @@ void f(unsigned int n, int * restrict p, int * restrict q) {
         *p++ = *q++;
     }
 }
+

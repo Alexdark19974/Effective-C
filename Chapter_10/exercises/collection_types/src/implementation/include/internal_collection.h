@@ -20,3 +20,4 @@ struct collection_type {
     struct list *listp;
 };
 #endif /* INTERINAL_COLLECTION_H */
+

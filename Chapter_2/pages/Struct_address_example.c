@@ -58,15 +58,16 @@ int main(void)
     printf("----------------struct foo6--------------------------------\n");
     printf("size of foo6 = %lu\n", sizeof(bytes_8));
     printf("----------------struct foo6--------------------------------\n");
-    
+
     printf("----------------struct foo7--------------------------------\n");
     printf("size of foo7 = %lu\n", sizeof(bytes_4));
     printf("----------------struct foo7--------------------------------\n");
-    
+
     printf("----------------struct foo9--------------------------------\n");
     printf("size of foo9 = %lu\n", sizeof(bytes_total));
     printf("----------------struct foo9--------------------------------\n");
 
-    
+
     return EXIT_SUCCESS;
 }
+

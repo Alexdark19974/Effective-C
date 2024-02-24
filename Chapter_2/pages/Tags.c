@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/*
-    Chapter 2: Object, Functions, and Types
-        Subchapter: Tags
-    Pages: 30 - 3
-*/
+/* Chapter 2: Object, Functions, and Types
+    Subchapter: Tags
+   Pages: 30 - 3 */
 
 void tags(void);
 void typedefs(void);
@@ -74,10 +72,9 @@ void typedefs(void)
     // function pointer type that points to void (*)(int);
     typedef void (*pfv)(int);
 
-    /* 1) function signal that accepts 2 params: int and a pointer to a function 
-     * That accepts param int and returns nothing;
-     * 2) function signal returns pointer to a function that accepts param int 
-     *    And returns nothing */
+    /* 1) function signal that accepts 2 params: int and a pointer to a function
+          That accepts param int and returns nothing;
+       2) function signal returns pointer to a function that accepts param int and returns nothing */
     /*1*/void (*signal(int, void func(int)))(int);
     /*2*/fv *signal(int, fv *);
     /*3*/pfv signal(int, pfv);
@@ -127,3 +124,4 @@ void tags(void)
     typedefs();
     self_referential_structs();
 }
+

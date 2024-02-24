@@ -4,16 +4,14 @@
 #include <locale.h>
 #include <uchar.h>
 
-/*
-    Chapter 7: Character And Strings
-        Subchapter: Character Conversion;
-            1) C Standard Library (separate file "C_standard_library");
-            2) libiconv;
-            3) Win32 Conversion APIs;
-    Pages: 128 - 131
-    Useful sources: 
-       1) https://unicode.org/faq/utf_bom.html
-*/
+/* Chapter 7: Character And Strings
+    Subchapter: Character Conversion;
+        1) C Standard Library (separate file "C_standard_library");
+        2) libiconv;
+        3) Win32 Conversion APIs;
+   Pages: 128 - 131
+   Useful sources:
+        1) https://unicode.org/faq/utf_bom.html */
 
 #if __STDC_UTF_16__ != 1
 #error "__STDC_UTF_16__ not defined"
@@ -36,9 +34,9 @@ int main(void)
 void utf8_to_utf16(void)
 {
     /* Some major points of contention about wchar_t:
-     * 1) Its size is implementation-dependant and system-dependant (8/16/32 bits);
-     * 2) The range of sizes undermines compatibility (16 bit for windows and 32 bits for Unix systems)
-     * 3) Conversion functions may lead to loss of data for the aforementioned reasons; */
+        1) Its size is implementation-dependant and system-dependant (8/16/32 bits);
+        2) The range of sizes undermines compatibility (16 bit for windows and 32 bits for Unix systems)
+        3) Conversion functions may lead to loss of data for the aforementioned reasons; */
 
     char input[] = u8"I ♥️  cakes!";
     const size_t input_size = sizeof(input);
@@ -77,15 +75,15 @@ void utf8_to_utf16(void)
     printf("Converted to %zu UTF-16 code units: [ ", output_size);
     for(size_t x = 0; x < output_size; ++x) printf("%#x ", output[x]);
     puts("]");
-    
+
 }
 
 void utf8_to_utf32(void)
 {
     /* Some major points of contention about wchar_t:
-     * 1) Its size is implementation-dependant and system-dependant (8/16/32 bits);
-     * 2) The range of sizes undermines compatibility (16 bit for windows and 32 bits for Unix systems)
-     * 3) Conversion functions may lead to loss of data for the aforementioned reasons; */
+        1) Its size is implementation-dependant and system-dependant (8/16/32 bits);
+        2) The range of sizes undermines compatibility (16 bit for windows and 32 bits for Unix systems)
+        3) Conversion functions may lead to loss of data for the aforementioned reasons; */
 
     char input[] = u8"I ♥️  cakes!";
     const size_t input_size = sizeof(input);
@@ -124,5 +122,6 @@ void utf8_to_utf32(void)
     printf("Converted to %zu UTF-32 code units: [ ", output_size);
     for(size_t x = 0; x < output_size; ++x) printf("%#x ", output[x]);
     puts("]");
-    
+
 }
+

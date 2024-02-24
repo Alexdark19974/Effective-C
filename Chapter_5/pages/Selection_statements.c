@@ -3,12 +3,11 @@
 #include <stdbool.h>
 #include <limits.h>
 
-/*
-    Chapter 5: Control Flow
-        Subchapter: Selection Statements
-            1) if-Statement;
-            2) switch-Statement; 
-    Pages: 83 - 88
+/* Chapter 5: Control Flow
+    Subchapter: Selection Statements
+        1) if-Statement;
+        2) switch-Statement;
+Pages: 83 - 88
 */
 
 bool safediv(int dividend, int divisor, int *quotient) {
@@ -37,8 +36,7 @@ void print_grade_switch(unsigned marks) // compile with -Wswitch-enum
 {
     /* controlling expression must have an integer type */
     /* Switch jumps to one of case labels that matches the result of the controlling expression */
-    /* It is good practice to add break statement to every case label 
-     * Unless you expect a fall-through */
+    /* It is good practice to add break statement to every case label Unless you expect a fall-through */
     switch(marks/10) {
         case 10: // fall-through: no warning to due nothing being modified twice;
         case 9:
@@ -58,8 +56,8 @@ void print_grade_switch(unsigned marks) // compile with -Wswitch-enum
 typedef enum { Savings, Checking, MoneyMarket /*, CD */ } AccountType; // when adding another enumerator, update case label too
 void assignInterestRate(AccountType account)
 {
-    double interest_rate; // unitialized variable 
-    switch(account) { // Will generate a warning if CD is not accounted for
+    double interest_rate; // unitialized variable
+    switch (account) { // Will generate a warning if CD is not accounted for
         case Savings: // a fall-through: warning due to interest_rate changing twice
             interest_rate = 3.0;
         case Checking:
@@ -70,11 +68,10 @@ void assignInterestRate(AccountType account)
             break;
         /* new case label for CD */
         /* case CD:
-         * interest rate = 7.5
-         * break; */
+           interest rate = 7.5;
+           break; */
         /* No default case label will not help identify unknown cases */
-        /* default: abort(); // abnormal termination of program
-         * */
+        /* default: abort(); // abnormal termination of program */
     }
     printf("Interest rate = %g.\n", interest_rate); // possible unitiliazed read (consider it UB)
 
@@ -96,9 +93,8 @@ void show_misleading_indentation_of_if_statement(void) {
     }
 
     /* it is good practice to always encapsulate substatements with braces to avoid
-     * Possible errors and warnings
-     * It improves readability of code 
-     * */
+       Possible errors and warnings
+       It improves readability of code */
 }
 
 void if_statement(void)
@@ -108,16 +104,15 @@ void if_statement(void)
     int c = 8;
     int quotient = 0;
     /* the first if-statement conditionally determines
-     * Whether a substatement is executed
-     * Ultimately, if-statement boils down to whether a controlling expression
-     * Is equal to zero or not
-     * */
+       Whether a substatement is executed
+       Ultimately, if-statement boils down to whether a controlling expression
+       Is equal to zero or not */
     if (a) // controlling expression: substatement is execute4d if a != 0
         puts("var a is not equal to 0");
 
-    /* the second kind of if-statement has an else clause 
-     * If the controlling expression is false
-     * The substatement after "else" is executed */
+    /* the second kind of if-statement has an else clause
+       If the controlling expression is false
+       The substatement after "else" is executed */
     if (b) // fisrt condition
         puts("var b is not equal to 0");
     else // alternative condition
@@ -160,3 +155,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+

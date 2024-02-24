@@ -4,9 +4,8 @@
 #include <limits.h>
 
 /* Chapter 2: Object, Functions, and Types
- * Subchapter: Boolean Types, and Character Types, Numerical Types
- * Pages: 21 - 24
- * */
+    Subchapter: Boolean Types, and Character Types, Numerical Types
+   Pages: 21 - 24 */
 
 void boolean_types(void);
 void character_types(void);
@@ -28,7 +27,7 @@ int main(void)
 void boolean_types(void)
 {
     /* You can use either _Bool or bool (if stdbool.h is included)
-     * To declare boolean objects that store either 1 or zero */
+        To declare boolean objects that store either 1 or zero */
     _Bool flag1 = 1;
     bool flag2 = false; // stdbool.h allows to assign "false" and "true" which are integer constants 0 and 1, respectively
     /* or you can use macro definitions to define boolean values */
@@ -47,25 +46,24 @@ typedef unsigned int boolean;
 void character_types(void)
 {
     /* C defines 3 character types:
-     * 1) char;
-     * 2) signed char;
-     * 3) unsigned char; */
+        1) char;
+        2) signed char;
+        3) unsigned char; */
 
     /* Each complier will either define "char" either
-     * As "signed char" or "unsigned char"
-     * Either way, "char" stands out as a separate char type */
+       As "signed char" or "unsigned char"
+       Either way, "char" stands out as a separate char type */
 
     /* char type is used to represent basic execution character set:
-     * 1) letters (upper-/lower case);
-     * 2) 10 decimal digits;
-     * 3) punctuation characters;
-     * 4) space characters;
-     * 5) control characters;
-     * */
+        1) letters (upper-/lower case);
+        2) 10 decimal digits;
+        3) punctuation characters;
+        4) space characters;
+        5) control characters; */
 
     /* Don't use "char" to represent integers
-     * Use signed char to represent small signed integers
-     * Use unsigned char to represent small non-zero integers */
+       Use signed char to represent small signed integers
+       Use unsigned char to represent small non-zero integers */
 
     char some_character = -1; // my implementation defines char as signed char
     char arr[] = "abcdefghklmnopqrstxqwxyz0123456789!?.,;";
@@ -76,10 +74,10 @@ void character_types(void)
 
 void numerical_types(void)
 {
-    /* Numerical types represent: 
-     * 1) integers;
-     * 2) floats;
-     * 3) enumerators; */
+    /* Numerical types represent:
+        1) integers;
+        2) floats;
+        3) enumerators; */
 
     integer_types();
     enum_types();
@@ -90,9 +88,8 @@ void numerical_types(void)
 void integer_types(void)
 {
     /* There are 2 kinds of integers:
-     * 1) Signed;
-     * 2) Unsigned;
-     */
+        1) Signed;
+        2) Unsigned; */
 
     /* Signed integers represent negative, positive numbers, and zero*/
     /* Signed integers : signed char, short int, int, long int, long long int */
@@ -114,12 +111,12 @@ void integer_types(void)
 void enum_types(void)
 {
     /* enum/enumeration allows you to define a type that assigns names
-     * To integer values in cases with an enumerable set of constant values
-     * Such names are called enumerators */
+       To integer values in cases with an enumerable set of constant values
+       Such names are called enumerators */
 
     /* If you don't assign a number to the 1st enumerator, the count
-     * Starts from 0
-     * Each subsequent enumerator is incremented by 1  */
+       Starts from 0
+       Each subsequent enumerator is incremented by 1 */
 
     enum day { sun, mon, tue, wed, thu, fri, sat };
 
@@ -134,14 +131,12 @@ void enum_types(void)
 
 void floating_point_types(void)
 {
-    /* C language supports 3 floating-point types: 
-     * 1) float;
-     * 2) double;
-     * 3) long double;
-     *
-     * The floating point implementation is implementation dependent.
-     * Chapter 3 explains floats in great detail.
-     * */
+    /* C language supports 3 floating-point types:
+        1) float;
+        2) double;
+        3) long double;
+      The floating point implementation is implementation dependent.
+      Chapter 3 explains floats in great detail. */
 }
 
 void void_types(void)
@@ -159,3 +154,4 @@ void void_types(void)
     ptr_to_func = &main;
     printf("address of main function is %p\n", (void *) ptr_to_func); // will produce a different warning
 }
+

@@ -15,7 +15,7 @@ int main(void)
 void get_y_or_n(void)
 {
     /* The infamous function gets() is error-prone and leads to vulnerabilities because it doesn't verify arrray bounds at all
-     * You can even hack systems with it (see gets() and password vulnerabilities) */
+       You can even hack systems with it (see gets() and password vulnerabilities) */
 
     /* In any project, anywehere, avoid gets(). Use either gets_s() from c11, or fgets() which provides bound checking */
     char response[8] = {0};
@@ -37,8 +37,8 @@ void get_y_or_n(void)
 
 
 /* Even though, C11 offers a great variety of strings-handling functions that properly check bounds and null terminate,
- * The standard is not widely adopted.
- * Moreover _s functions are poorly supported by implementations */
+   The standard is not widely adopted.
+   Moreover _s functions are poorly supported by implementations */
 char *_gets(char *dest) {
     int c;
     char *p = dest;
@@ -64,3 +64,4 @@ char *_gets_s(char *dest, size_t len) {
 
     return dest;
 }
+

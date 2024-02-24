@@ -34,7 +34,7 @@ void convert_narrow_string_to_wide_string(void)
        fputws(L"An invalid multibyte sequence has been encountered.", stdout);
    } else {
        /* One thing to remember:
-        * If the output is expected to be multibyte-oriented, all output functions must be wide */
+          If the output is expected to be multibyte-oriented, all output functions must be wide */
       //  printf("%zu characters converted\n", ret); // NO, then the whole output will be byte-oriented
        wprintf(L"%zu characters converted\n", ret); // YES
    }
@@ -73,9 +73,10 @@ void convert_narrow_string_to_wide_string(void)
    mbtowc(&wc, &c, sizeof(wc));
 
    /* All wide characters and strings must have L prefix put before the object itself
-    * As well as functions that do output */
+      As well as functions that do output */
 
    wprintf(L"wc = %lc\n", wc);
 
    wprintf(L"BROADCAST_ADDR = \xFF\xFF\xFF\xFF\n, %u", L'ÿ');
 }
+

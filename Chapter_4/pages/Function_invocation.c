@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: Function Invocation
-    Page: 60
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: Function Invocation
+   Page: 60 */
 
 int max(int x, int y) {
     return x > y ? x : y;
@@ -34,8 +32,8 @@ int main(void)
 {
     int x = 11;
     int y = 21;
-    /* max is a function designator 
-     * that is converted to a pointer to a function at compile time */
+    /* max is a function designator
+       that is converted to a pointer to a function at compile time */
     int max_of_x_and_y = max(x, y);
 
     // passing function as an argument
@@ -43,3 +41,4 @@ int main(void)
 
      return EXIT_SUCCESS;
 }
+

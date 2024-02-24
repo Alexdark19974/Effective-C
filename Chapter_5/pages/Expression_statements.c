@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    Chapter 5: Control Flow
-        Subchapter: Expression Statements and Compound Statements
-    Pages: 81 - 82
-*/
+/* Chapter 5: Control Flow
+    Subchapter: Expression Statements and Compound Statements
+   Pages: 81 - 82 */
 
 int main(void)
 {
@@ -15,12 +13,10 @@ int main(void)
     int c = 0;
     int count = 0;
 
-    /* 
-     * Between an each expression statement,
-     * There is a sequence point 
-     * So that all side effects are produces
-     * Before executing the next line of code 
-     * */
+    /* Between an each expression statement,
+       There is a sequence point
+       So that all side effects are produces
+       Before executing the next line of code */
 
     a = 6; // assignment is a side effect too
     c = a + b; // a side effect is the updated value
@@ -47,3 +43,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+

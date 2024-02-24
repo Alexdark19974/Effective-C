@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <limits.h>
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: Bitwise Operators
-    Page: 69
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: Bitwise Operators
+   Page: 69 */
 
 void show_complement(void);
 void left_right_shift(void);
@@ -113,12 +111,11 @@ void left_right_shift(void)
     printf("left shift by 1 of signed i (INT_MAX) is %d (UB)\n", i);
 
     /* Conclusion:
-     * 1) Right shift of unsinged variable may either be quotient of (E1 / 2^E2) or 0
-     * 2) Right shift of signed non-negative value may produce zero or value of (E1 / 2^E2)
-     * 3) Left shift of unsigned variable may produce either value of (E1 x 2^E2) or reduced modulo one more than the maximum representable type (wraparound - defined behavior)
-     * 4) Left shift of signed varialbe may produce either value of (E1 x 2^E2) if it fits the width of the type, otherwise UB;
-     * 5) Left shift of signed negative value is UB by default
-     * */
+       1) Right shift of unsinged variable may either be quotient of (E1 / 2^E2) or 0
+       2) Right shift of signed non-negative value may produce zero or value of (E1 / 2^E2)
+       3) Left shift of unsigned variable may produce either value of (E1 x 2^E2) or reduced modulo one more than the maximum representable type (wraparound - defined behavior)
+       4) Left shift of signed varialbe may produce either value of (E1 x 2^E2) if it fits the width of the type, otherwise UB;
+       5) Left shift of signed negative value is UB by default */
 
     puts("---------- left_right_shift ------------\n");
 }
@@ -181,3 +178,4 @@ void bitwiseXOR(void)
 
     puts("---------- bitwiseXOR ------------\n");
 }
+

@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: Cast Operators
-    Page: 75
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: Cast Operators
+   Page: 75 */
 
 int main(void)
 {
@@ -19,3 +17,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+
