@@ -1,21 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* 
-    Chapter 2: Objects, Function and Types
-        Subchapter: Function Types
-    Pages: 24 - 25
-*/
+/* Chapter 2: Objects, Function and Types
+    Subchapter: Function Types
+   Pages: 24 - 25 */
 
 /* if the declarator includes a parameter type list
- * And a definition, the declaration of each parameter 
- * Must include an identifier except void parameter */
+   And a definition, the declaration of each parameter
+   Must include an identifier except void parameter */
 void function_types(void)
 {
     /* Function types are derived types */
     /* Their type is derived from:
-     * 1) the return type;
-     * 2) the number and types of its parameters; */
+        1) the return type;
+        2) the number and types of its parameters; */
 
     /* the name of a function is a function declarator as well as its return type */
     /* the function declarations down below are function prototypes */

@@ -4,14 +4,12 @@
 #include <wchar.h>
 #include <uchar.h>
 
-/*
-    Chapter 7: Character And Strings
-        Subchapter: Strings;
-            1) String Literals;
-    Pages: 131 - 134
-    Useful sources: 
-       1) https://unicode.org/faq/utf_bom.html
-*/
+/* Chapter 7: Character And Strings
+    Subchapter: Strings;
+        1) String Literals;
+   Pages: 131 - 134
+   Useful sources:
+        1) https://unicode.org/faq/utf_bom.html */
 
 void strings(void);
 void narrow_strings(void);
@@ -27,7 +25,7 @@ int main(void)
 void strings(void)
 {
     /* strings are represented as character arrays
-     * They are a contiguous sequence of bytes including a terminating null character */
+       They are a contiguous sequence of bytes including a terminating null character */
 
     /* There are 2 types of strings: narrow and wide */
 #ifndef WCHAR
@@ -56,7 +54,7 @@ void narrow_strings()
     }
     puts(" ]");
 
-    /* Never modify a string literal unless the memory is statically or dynamically allocated for it*/
+    /* Never modify a string literal unless the memory is statically or dynamically allocated for it */
     char *string_literal_p = "Hello, World!"; // points to string allocated somewhere in memory, but not accessible to us
    // *string_literal_p = 'A'; // surefire way to segfault
 
@@ -72,7 +70,7 @@ void narrow_strings()
     /* String literals can also be declared using prefixes that denote type of char */
     {
         char str[] = "string1"; // no prefix means an array of type char
-        wchar_t str2[] = L"string2"; // L prefix denotes wide char 
+        wchar_t str2[] = L"string2"; // L prefix denotes wide char
         char16_t str3[] = u"string3"; // u prefix for char16_t (C11)
         char32_t str4[] = U"string4"; // u prefix for char16_t (C11)
         char str5[] = u8"encoded"; // u8 for UTF-8 (C11)

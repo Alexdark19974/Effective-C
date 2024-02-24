@@ -2,14 +2,12 @@
 #include <stdlib.h>
 #include <limits.h>
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: Arithmetic Operators
-    Page: 67
-    Useful sources:
+/* Chapter 4: Expressions and Operators
+    Subchapter: Arithmetic Operators
+   Page: 67
+   Useful sources:
         1) https://users.cs.utah.edu/~regehr/papers/overflow12.pdf
-        2) https://www.scaler.com/topics/c/overflow-and-underflow-in-c/
-*/
+        2) https://www.scaler.com/topics/c/overflow-and-underflow-in-c/ */
 
 void is_overflow(int val1, int val2, int limit, char operator)
 {
@@ -60,18 +58,15 @@ int Rem(int val1, int val2);
 
 int main(int argc, char **argv)
 {
-    /*
-     * binary aritmetic operators:
-     * 1) addition 2 + 1;
-     * 2) subtraction 2 - 1;
-     * 3) multiplication: 2 * 1;
-     * 4) division: 2 / 1;
-     * 5) remainder: 2 % 1;
-     *
-     * unary arithmetic operators:
-     * 1) +
-     * 2) -
-     * */
+    /* binary aritmetic operators:
+       1) addition 2 + 1;
+       2) subtraction 2 - 1;
+       3) multiplication: 2 * 1;
+       4) division: 2 / 1;
+       5) remainder: 2 % 1;
+       unary arithmetic operators:
+       1) +
+       2) - */
     char *endptr = NULL;
     int a = 0, b = 0, ret = 0, base = 0;
 
@@ -152,3 +147,4 @@ int Rem(int val1, int val2)
     is_overflow(val1, val2, INT_MIN, '%');
     return val1 % val2;
 }
+

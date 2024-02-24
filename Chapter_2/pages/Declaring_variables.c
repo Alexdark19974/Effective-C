@@ -1,10 +1,8 @@
 #include <stdio.h>
 
-/*
-    Chapter 2: Object, Functions, and Types
-        Subchapter: Declaring variables
-    Pages: 14 -15
-*/
+/* Chapter 2: Object, Functions, and Types
+    Subchapter: Declaring variables
+   Pages: 14 -15 */
 
 void swap(int, int); // defined later, now only declared
 void show_declaring_multiple_variables(void);
@@ -32,12 +30,13 @@ void show_declaring_multiple_variables(void)
     /* but doing so can be confusing due to different object types */
 
     /* This code is easier to understand
-     * char *src;
-     * char c;
-     * int x;
-     * int y[5];
-     * int m[12];
-     * int n[15][3];
-     * int o[21];
-     * But it takes more space */
+       char *src;
+       char c;
+       int x;
+       int y[5];
+       int m[12];
+       int n[15][3];
+       int o[21];
+       But it takes more space */
 }
+

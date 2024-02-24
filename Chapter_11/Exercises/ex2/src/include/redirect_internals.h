@@ -9,3 +9,4 @@
 #define IS_FILE_AS_STDOUT(x) ((x) == '>')
 
 #endif /* REDIRECT_INTERNALS_H */
+

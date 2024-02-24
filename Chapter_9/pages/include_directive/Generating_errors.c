@@ -21,14 +21,12 @@ int main(void)
 {
 
     /* Preprocessor also allows us to generate an error message if
-     * None of the conditions are true 
-     *
-     * There are 2 ways to go about it:
+       None of the conditions are true
+       There are 2 ways to go about it:
        1) generate a compile error;
        2) use #error directive;
+       To reproduce an error, simply copy and paste #error message outside of conditions */
 
-       To reproduce an error, simply copy and paste #error message outside of conditions
-
-     * */
     return 0;
 }
+

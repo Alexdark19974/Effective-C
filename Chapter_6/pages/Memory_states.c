@@ -4,11 +4,9 @@
 #include <string.h>
 #include <errno.h>
 
-/* 
-    Chapter 6: Dynamically Allocated Memory
-        Subchapter: Memory States
-    Pages: 109 - 110
-*/
+/* Chapter 6: Dynamically Allocated Memory
+    Subchapter: Memory States
+   Pages: 109 - 110 */
 
 void explain_memory_states(void);
 
@@ -18,16 +16,12 @@ int main(void) {
 
 void explain_memory_states(void)
 {
-    /* 
-        There are 3 states in which dynamically allocated memory can exist:
-            1) unallocated and unitialized within the memory manager;
-            2) allocated but unitialized (what malloc, realloc, and reallocarray do);
-            3) allocated and initialized (what calloc() does);
+    /* There are 3 states in which dynamically allocated memory can exist:
+        1) unallocated and unitialized within the memory manager;
+        2) allocated but unitialized (what malloc, realloc, and reallocarray do);
+        3) allocated and initialized (what calloc() does);
+        Depending on the state of memory, there are actions you can or cannot do */
 
-    /* 
-        Depending on the state of memory, there are actions you can or cannot do
-    */
-    
     char *p = malloc(24); // allocated but unitialized: can be written to, freed, but must not be read before initialization
 
     free(p);
@@ -38,3 +32,4 @@ void explain_memory_states(void)
     free(p);
     p = NULL;
 }
+

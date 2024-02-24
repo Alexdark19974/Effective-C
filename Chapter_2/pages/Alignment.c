@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-/*
-    Chapter 2: Objects, Functions, and Types
-        Subchapter: Alignment
-    Pages: 18 - 19
-*/
+/* Chapter 2: Objects, Functions, and Types
+    Subchapter: Alignment
+   Pages: 18 - 19 */
 
 struct S {
     int i; double d;  char c; // padding: b b b b | 0 0 0 0 | b b b b b b b b | b | 0 0 0 0 0 0 0 = 24 bytes;
@@ -33,7 +31,7 @@ void show_offset_of_fields_in_struct(void)
     offset = offsetof(struct S, c);
     printf("offset of field 'c' in struct S is %lu\n", offset);
     printf("-----------------------------------------------\n");
-    
+
     printf("------------- offset of struct SS -------------\n");
     offset = offsetof(struct SS, c);
     printf("offset of field 'c' in struct SS is %lu\n", offset);
@@ -49,29 +47,29 @@ int main(void)
     struct S *good_s_ptr = (struct S *)good_buff;   // correct pointer alignment
 
 /* Well, the first thing that may come as a surprise is that sizeof(S), is actually 24, not 7. Why?
-The basic types really want to be placed at the address that is the multiple of their size
-That is their alignment requirement. 
-So when you have a struct where double (with size of 8) is placed after int (with size of 4),
-The whole struct will have alignment requirement of 8 and there will be 4 bytes of padding between the int and double
-To ensure that double is placed at an address that is a multiple of 8.
-Its size will also be rounded up to a multiple of 8, so the total size is 24.
+   The basic types really want to be placed at the address that is the multiple of their size
+   That is their alignment requirement.
+   So when you have a struct where double (with size of 8) is placed after int (with size of 4),
+   The whole struct will have alignment requirement of 8 and there will be 4 bytes of padding between the int and double
+   To ensure that double is placed at an address that is a multiple of 8.
+   Its size will also be rounded up to a multiple of 8, so the total size is 24.
 
-So when you create a variable of type S, the compiler knows it has to be placed at address that is a multiple of 8.
-But when you create an array of chars, they have no alignments requirement and the compiler can place them at an arbitrary address,
-Which is exactly what is happening with bad_buff.
-On the other hand, when you declare good_buff and say it has the same alignment requirement as S,
-The compiler ensures it starts at a multiple of 8 (by leaving some bytes unused),
-So it can be accessed as S without breaking the alignment requirements.
+   So when you create a variable of type S, the compiler knows it has to be placed at address that is a multiple of 8.
+   But when you create an array of chars, they have no alignments requirement and the compiler can place them at an arbitrary address,
+   Which is exactly what is happening with bad_buff.
+   On the other hand, when you declare good_buff and say it has the same alignment requirement as S,
+   The compiler ensures it starts at a multiple of 8 (by leaving some bytes unused),
+   So it can be accessed as S without breaking the alignment requirements.
 
-So what exactly happens at main? 
-Suppose the stack in main starts at address 1004,
-So the compiler will place bad_buff of size 24 is starting at address 1004 and ends at 1028.
-The problem is that the starting address is not a multiple of 8 and if you access through S* pointer,
-The double member is not placed at a multiple of 8, which can have negative consequences,
-Like writing it may not be atomic and it can even crash the program on some platforms.
-Then the compiler sees the good_buff,
-Which requires to be placed at an address that is a multiple of 8 (which is the alignment requirement of S),
-So instead of placing it at 1028, the compiler will skip 4 bytes and place it at address 1032 (1008 - 1032), so accessing it through S will work as expected. */
+   So what exactly happens at main?
+   Suppose the stack in main starts at address 1004,
+   So the compiler will place bad_buff of size 24 is starting at address 1004 and ends at 1028.
+   The problem is that the starting address is not a multiple of 8 and if you access through S* pointer,
+   The double member is not placed at a multiple of 8, which can have negative consequences
+   Like writing it may not be atomic and it can even crash the program on some platforms.
+   Then the compiler sees the good_buff,
+   Which requires to be placed at an address that is a multiple of 8 (which is the alignment requirement of S),
+   So instead of placing it at 1028, the compiler will skip 4 bytes and place it at address 1032 (1008 - 1032), so accessing it through S will work as expected. */
 
     printf("-----------------------\n");
     printf("size of struct S =%lu\n", sizeof(struct S));
@@ -83,12 +81,12 @@ So instead of placing it at 1028, the compiler will skip 4 bytes and place it at
     printf("start address of bad_buff is %p\n", &bad_buff[0]);
     printf("-----------------------\n");
 
-    { 
+    {
         bad_s_ptr->i = 14;
         bad_s_ptr->d = 1000000000000000.5;
         bad_s_ptr->c = 'a';
     }
-    
+
     printf("bad_buff_s_ptr=%p\n", (void *) bad_s_ptr);
     printf("bad_s_ptr->i=%i\n", bad_s_ptr->i);
     printf("bad_s_ptr->d=%f\n", bad_s_ptr->d);
@@ -107,4 +105,5 @@ So instead of placing it at 1028, the compiler will skip 4 bytes and place it at
 
     return EXIT_SUCCESS;
 }
+
 

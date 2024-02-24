@@ -8,21 +8,18 @@
 #include <stdbool.h>
 #include <wchar.h>
 
-/*  
-    Chapter 3: Arithmetiic Types
-        Subchapter:
-            1) Integer Conversion Rank;
-            2) Integer Promotions;
-            3) Usual Arithmetic Conversions;
-            4) An example of Implicit Conversion
-            5) Safe Conversions;
-            6) Integer Conversions;
-            7) Integer to Floating-Point Converions;
-            8) Floating-Point to Integer Converions;
-            9) Floating-Point Demotions;
-
-    pages: 49 - 49
-*/
+/* Chapter 3: Arithmetiic Types
+    Subchapter:
+        1) Integer Conversion Rank;
+        2) Integer Promotions;
+        3) Usual Arithmetic Conversions;
+        4) An example of Implicit Conversion
+        5) Safe Conversions;
+        6) Integer Conversions;
+        7) Integer to Floating-Point Converions;
+        8) Floating-Point to Integer Converions;
+        9) Floating-Point Demotions;
+   Pages: 49 - 49 */
 
 /*errnot_t is an extension of C11 standard */
 /*errno_t*/int do_stuff(signed long value)
@@ -70,7 +67,7 @@ void example_5(void)
     printf("fl = %f\n", fl);
 
     fl = ull;
-    
+
     printf("ull = %llu\n", ull);
     printf("fl = %f\n", fl);
 
@@ -98,7 +95,7 @@ void integer_conversion_rank(void)
     /* 3) The rank of long long int is greater than the rank of long int, etc. */
     // signed char < signed short < signed int < signed long < signed long long
 
-    // 4) The rank of any unsigned integer type equals 
+    // 4) The rank of any unsigned integer type equals
     //    The rank of the corresponding singed integer type, if any
     {
         signed char c = 1;
@@ -114,7 +111,7 @@ void integer_conversion_rank(void)
         unsigned char uc = 1;
     }
 
-    // 6) The rank of _Bool is the smallest rank 
+    // 6) The rank of _Bool is the smallest rank
     {
         _Bool b = 1;
         char c = 5;
@@ -149,8 +146,8 @@ void integer_promotions(void)
         /* By converting each char to signed int, we avoid intermediary overflow */
         cresult = c1 * c2 / c3; // the intermediate result is 300, which exceeds the precision of signed char
         printf("cresult is =%u\n", cresult);
-        /* If unsigned value can be represented in a signed int, it will be converted to int 
-         * Otherwise, to unsigned int (value preserving approach and part of the C standard */
+        /* If unsigned value can be represented in a signed int, it will be converted to int
+           Otherwise, to unsigned int (value preserving approach and part of the C standard */
         {
             signed char c4 = -6;
             unsigned char c5 = 5;
@@ -163,31 +160,29 @@ void integer_promotions(void)
 void arithmetic_conversions(void)
 {
     /* Arithmetic conversion are used for yelding a common type by balancing
-     * Both operands of a binary operator to a common type */
+       Both operands of a binary operator to a common type */
 
     /* Conditional (?:) operator also uses arithmetic conversion to balance out 2nd and 3rd arguments */
 
     /* Balancing operands in terms of a common type is useful for:
-     * 1) Perfomance reasons;
-     * 2) Avoiding overflows; */
+        1) Perfomance reasons;
+        2) Avoiding overflows; */
 
     /* If one of the operands is a floating-point type, then */
         /* 1) If one type of either operand is long double, the other operand is converted to long double;
-         * 2) If neigther operand is long double, but either operand is double, the other is converted to double 
-         * 3) If neighter operand is long double or double, but either operand is float, the other operand is cconverted to float;
-         * 4) If either operand's type long / int / short / char / , but the other is of type double, the other is converted to double;
-         * 5) If either operand is float, but the other is double, the other is converted to double
-         * */
+           2) If neigther operand is long double, but either operand is double, the other is converted to double
+           3) If neighter operand is long double or double, but either operand is float, the other operand is cconverted to float;
+           4) If either operand's type long / int / short / char / , but the other is of type double, the other is converted to double;
+           5) If either operand is float, but the other is double, the other is converted to double */
 
     /* If neither of the opernds is a floating point type, then integer promotions are performed, and then
-     * 1) If both operands have the same type, no conversion is performed;
-     * 2) If both operands have signed/unsigned integer type, the operand with the lesser integer conversion
-     *    Rank is converted to the type of the operand with greater rank;
-     * 3) If the operand that has the unsigned integer type has a rank greater than or equal to the rank of the other operand's type, the operator with the signed integer type is converted to the unsigned integer type;
-     * 4) If the operator with the signed integer type can represent all of the values of the type of the operand
-     * with the unsigned integer type, the latter will be converted to the signed integer type
-     * 5) If none of the above applies, both operands are converted to the unsigned integer type
-     * */
+       1) If both operands have the same type, no conversion is performed;
+       2) If both operands have signed/unsigned integer type, the operand with the lesser integer conversion
+          Rank is converted to the type of the operand with greater rank;
+       3) If the operand that has the unsigned integer type has a rank greater than or equal to the rank of the other operand's type, the operator with the signed integer type is converted to the unsigned integer type;
+       4) If the operator with the signed integer type can represent all of the values of the type of the operand
+       with the unsigned integer type, the latter will be converted to the signed integer type
+       5) If none of the above applies, both operands are converted to the unsigned integer type */
 
 }
 
@@ -197,14 +192,14 @@ void implicit_conversion(void)
 
     int si = 5;
     short ss = 8;
-    long sl = si; // value of si (int) is converted to the type of sl (long int) 
+    long sl = si; // value of si (int) is converted to the type of sl (long int)
     unsigned short us = ss + sl; // ss is converted to long int, then the result is converted to unsigned short
-    
+
     /* Implicit conversion (coercion) occurs in the absence of explicit type-casting */
     /* Implicit conversion follows the 3 concepts:
-     * 1) integer conversion rank;
-     * 2) integer promotions;
-     * 3) arithmetic conversions; */
+        1) integer conversion rank;
+        2) integer promotions;
+        3) arithmetic conversions; */
 
     integer_conversion_rank();
     integer_promotions();
@@ -236,10 +231,10 @@ void explicit_conversion(void)
 
 void arithmetic_conversion(void)
 {
-    /* If you want a value represented in one type to be represented in another 
-     * There are 2 ways to do it: 
-     * 1) explicit conversion;
-     * 2) implicit conversion */
+    /* If you want a value represented in one type to be represented in another
+       There are 2 ways to do it:
+        1) explicit conversion;
+        2) implicit conversion */
 
     explicit_conversion();
     implicit_conversion();
@@ -261,3 +256,4 @@ int main(void)
     return EXIT_SUCCESS;
 
 }
+

@@ -6,26 +6,24 @@
 #include <stdalign.h>
 #include <stddef.h>
 
-/* 
-    Chapter 6: Dynamically Allocated Memory
-        Subchapter: Storage Duration
-            1) The Heap and Memory Managers;
-            2) When to Use Dynamically Allocated Memory;
-        Subchapter: Memory Management Functions
-            1) The malloc function (with and w/o declaring a type);
-            2) Casting the Pointer to the Type of the Declared Object;
-            3) Reading Unitialized Memory;
-            4) The malloc Function;
-            5) The calloc Function;
-            6) The aligned_alloc Function;
-            7) The realloc Function;
-            8) The reallocArray Function;
-            9) The free() function;
-            10) Avoiding Memory Leaks;
-            11) Avoiding Double Free;
-            12) Reading Unitialized Memory; 
-    Pages: 99 - 109
-*/
+/* Chapter 6: Dynamically Allocated Memory
+    Subchapter: Storage Duration
+        1) The Heap and Memory Managers;
+        2) When to Use Dynamically Allocated Memory;
+    Subchapter: Memory Management Functions
+        1) The malloc function (with and w/o declaring a type);
+        2) Casting the Pointer to the Type of the Declared Object;
+        3) Reading Unitialized Memory;
+        4) The malloc Function;
+        5) The calloc Function;
+        6) The aligned_alloc Function;
+        7) The realloc Function;
+        8) The reallocArray Function;
+        9) The free() function;
+        10) Avoiding Memory Leaks;
+        11) Avoiding Double Free;
+        12) Reading Unitialized Memory;
+    Pages: 99 - 109 */
 
 void explain_malloc(void);
 void explain_calloc(void);
@@ -47,45 +45,42 @@ int main(void)
 
 void explain_memory(void)
 {
-    /* Dynamically allocated storage/memory duration 
-     * Extends from the allocation until the deallocation */
+    /* Dynamically allocated storage/memory duration
+       Extends from the allocation until the deallocation */
 
-    /* It is allocated from the heap which is 1 or more divisible blocks 
-     * managed by the memory manager */
+    /* It is allocated from the heap which is 1 or more divisible blocks
+       managed by the memory manager */
 
     /* The memory manager is responsible for unallocated and deallocated memory */
     /* When it comes to deallocation, it might attached the freed block to the adjacent
-     * unallocated free block to make a larger block to reduce fragmentation 
-     *
-     * It also requests memory blocks from the operating system.
-     * */
+       unallocated free block to make a larger block to reduce fragmentation
+       It also requests memory blocks from the operating system. */
 
     /* The memory manager runs alongside the client process */
 
     /* The memory manager doesn't handle allocated memory
-     * It is the caller's responsibility */
+       It is the caller's responsibility */
 
-    /* dynamically allocated memory is less efficient than static/automatic storage 
-     * Because it takes time for the memory manager to find a block of the requested size 
-     * It takes time to free the block and possibly re-attach it to the adjacent block too.
-     * Generally speaking, switching from the userspace to kernelspace is a taxing endeavor. */
+    /* dynamically allocated memory is less efficient than static/automatic storage
+       Because it takes time for the memory manager to find a block of the requested size
+       It takes time to free the block and possibly re-attach it to the adjacent block too.
+       Generally speaking, switching from the userspace to kernelspace is a taxing endeavor. */
 
-    /* Dynamically allocated memory is used in the following cases: 
-     * 1) The size of the storage isn't known at compile time
-     * 2) The number of objects isn't known until runtime 
-     * Otherwise, use automatic/static storage for higher efficiency. */
+    /* Dynamically allocated memory is used in the following cases:
+       1) The size of the storage isn't known at compile time
+       2) The number of objects isn't known until runtime
+       Otherwise, use automatic/static storage for higher efficiency. */
 
-    /* Memory leaks are possible too, and they happen 
-     * When the allocated storage is not deallocated (malloc() without subsequent free() */
+    /* Memory leaks are possible too, and they happen
+       When the allocated storage is not deallocated (malloc() without subsequent free() */
 
     /* There are a few library functions that manage dynamic memory:
-     * 1) malloc();
-     * 2) calloc();
-     * 3) realloc(); // OpenBSD
-     * 4) aligned_alloc(); from C11
-     * 5) alloca(); // special case
-     * 6) free();
-     * */
+        1) malloc();
+        2) calloc();
+        3) realloc(); // OpenBSD
+        4) aligned_alloc(); from C11
+        5) alloca(); // special case
+        6) free(); */
     explain_malloc();
     explain_aligned_alloc();
     explain_calloc();
@@ -137,7 +132,7 @@ void explain_malloc_without_declaring_a_type(void)
     char *cp = malloc(sizeof(widget));
 
     widget w = {
-        .c = "abc", 
+        .c = "abc",
         .i = 9,
         .d = 3.2
     };
@@ -145,16 +140,16 @@ void explain_malloc_without_declaring_a_type(void)
     memcpy(p, &w, sizeof(widget));      // coerced to void * pointers
 
     /* Contrary to what the book presents, you have to explicitly cast p to widget *p
-     * Because accessing an object of type void will generate an error */
+       Because accessing an object of type void will generate an error */
     printf("p.i = %d.\n", ((widget *)p)->i);
 
     /* Or you can assign address to the pointer of the proper type */
     widget *wp = p;
     printf("wp.i = %d.\n", wp->i);
-    
+
     memcpy(cp, &w, sizeof(widget));      // coerced to void * pointers
     /* You also have to cast to widget * here
-     * Having sufficient storage for struct widget does not mean char * is widget * */
+       Having sufficient storage for struct widget does not mean char * is widget * */
     printf("cp.i = %d.\n", ((widget *)cp)->i);
 
 #if 0
@@ -209,13 +204,13 @@ void reading_unitialized_memory(void)
 {
     void show_the_safe_version(void);
     /* when allocated memory is returned from malloc()
-     * It is unitialized (it contains garbage values) */
+       It is unitialized (it contains garbage values) */
     char *str = (char *)malloc(16); // allocated memory does not contain zeroes
     if (str) {
         strncpy(str, "123456789abcdef", 15); // the string is not null-terminated
         /* Having zeroed byte at str[15] is just pure luck
-         * Because memory manager might allocate more memory than needed
-         * This is still undefined behavior */
+           Because memory manager might allocate more memory than needed
+           This is still undefined behavior */
         printf("str = %s, str[15]=%d\n", str, str[15]);
 
         str[15] = '\0'; // proper null termination
@@ -228,7 +223,7 @@ void reading_unitialized_memory(void)
 void show_the_safe_version(void)
 {
     /* when allocated memory is returned from malloc()
-     * It is unitialized (it contains garbage values) */
+       It is unitialized (it contains garbage values) */
     char *str = (char *)malloc(17); // 0 ... 16
     if (str) {
         strncpy(str, "123456789abcdef", 17); // account for '\0', if src string is less than 17, the rest will be filled with '\0';
@@ -252,14 +247,13 @@ void explain_aligned_alloc(void)
 
 void explain_calloc(void)
 {
-    /* calloc works like malloc() except for the following things: 
-     * 1) the allocated storage is initialized to zero bytes; 
-     * 2) it accepts 2 arguments: nmemb and size
-     *      nmemb - a number of objects;
-     *      size - size of one object
-     * 3) the total number of bytes is the product of nmemb * size
-     * 4) the function checks for overflow of size_t and returns NULL if true
-     * */
+    /* calloc works like malloc() except for the following things:
+       1) the allocated storage is initialized to zero bytes;
+       2) it accepts 2 arguments: nmemb and size
+            nmemb - a number of objects;
+            size - size of one object
+       3) the total number of bytes is the product of nmemb * size
+       4) the function checks for overflow of size_t and returns NULL if true */
     void *p = calloc(2, sizeof(widget));
     if (p) {
         widget arr[2] = {
@@ -289,15 +283,15 @@ void explain_realloc(void)
     printf("p = %s, strlen is %lu, size is %u\n", (char *) p, strlen((char *) p), 16);
 
     /* When you want to increase the size, the following steps occur:
-     * 1) realloc() calls malloc() to allocate new storage of the new size; 
-     * 2) realloc() copies contents of the old storage into the new storage;
-     * 3) if the new storage is larger, the rest of it remains uninitialized; 
-     * 4) realloc() calls free() to free the old storage 
-     * 5) if the realloc fails, the old storage is not freed, and realloc() returns NULL
-     * 6) By the way, realloc() doesn't check for integer overflow when passing the value size to it */
-    
+       1) realloc() calls malloc() to allocate new storage of the new size;
+       2) realloc() copies contents of the old storage into the new storage;
+       3) if the new storage is larger, the rest of it remains uninitialized;
+       4) realloc() calls free() to free the old storage
+       5) if the realloc fails, the old storage is not freed, and realloc() returns NULL
+       6) By the way, realloc() doesn't check for integer overflow when passing the value size to it */
+
     size+=50;
-    
+
     /* if realloc() fails, then NULL is returned and assigned to p, that previously had old storage */
     /* with the address to the storage lost, the memory leak occurs */
     // p = realloc(p, size); // this will lead to a memory leak
@@ -313,8 +307,8 @@ void explain_realloc(void)
         p = p2; // assign p2 to p to store the new address of the storage
     }
 #endif
-    /* After a successful realloc, always update pointers that previously pointed to the old storage 
-     * with p2 that points to the new storage even if the address is the same */
+    /* After a successful realloc, always update pointers that previously pointed to the old storage
+       with p2 that points to the new storage even if the address is the same */
     p = p2;
 
     if (p) { // allocated
@@ -336,9 +330,9 @@ void explain_reallocarray(void)
     printf("p = %s, strlen is %lu, size is %u\n", (char *) p, strlen((char *) p), 16);
 
     size+=50;
-    
+
     /* Like realloc() if reallocarray() fails (insufficient memory or overflow),
-     * reallocarray() returns NULL, and the previous storage is not freed */
+       reallocarray() returns NULL, and the previous storage is not freed */
     p2 = reallocarray(p, 1, size);
     if (size == 0 || (p2 == NULL)) {
         free(p);
@@ -359,7 +353,7 @@ void explain_free(void)
     void *p = NULL;
     void *p2 = NULL;
     size_t size = 24;
-    
+
     p2 = reallocarray(p, 1, 24);
     p = p2;
 
@@ -396,17 +390,17 @@ void explain_double_free(void)
 {
 #if 0
     {
-        /* When freeing the same allocated storage more than once 
-         * You may run into double-free vulnerabilities */
+        /* When freeing the same allocated storage more than once
+           You may run into double-free vulnerabilities */
 
         char *p = (char *) malloc(16);
         // ----- snip -----
         free(p);
         /* After the 1st free, the pointer is called a dangling pointer */
         /* Accessing memory that has been freed is undefined behavior */
-        /* Writing to freed memory is a security breach, where 
-         * Malicious code can be executed */
-        *p = 'w'; // writing to / reading from freed memory is undefined behavior 
+        /* Writing to freed memory is a security breach, where
+           Malicious code can be executed */
+        *p = 'w'; // writing to / reading from freed memory is undefined behavior
         free(p); // double free leads to vulnerabilites and exploits
     }
 #else
@@ -420,9 +414,10 @@ void explain_double_free(void)
         free(p); // safe too
 
         /* Setting pointer to NULL also makes sure that
-         * The proigram will crash 100% since accessing
-         * the NULL pointer is forbidden */
-        *p = 'w'; // crash is guaranteed 
+           The proigram will crash 100% since accessing
+           the NULL pointer is forbidden */
+        *p = 'w'; // crash is guaranteed
     }
 #endif
 }
+

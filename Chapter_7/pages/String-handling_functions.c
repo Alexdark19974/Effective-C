@@ -3,19 +3,17 @@
 #include <string.h>
 #include <wchar.h>
 
-/*
-    Chapter 7: Character And Strings
-        Subchapter: String-Handling Functions;
-            1) <string.h> and <wchar.h>;
-            2) Size and Length;
-            3) The strcpy Function;
-            4) Argument Checking;
-            5) The memcpy Function;
-            6) The gets Function;
-            7) Annex K Bounds-Checking Interfaces: gets_s, strcpy_s;
-            8) Runtime Constraints;
-    Pages: 141 - 143
-*/
+/* Chapter 7: Character And Strings
+    Subchapter: String-Handling Functions;
+        1) <string.h> and <wchar.h>;
+        2) Size and Length;
+        3) The strcpy Function;
+        4) Argument Checking;
+        5) The memcpy Function;
+        6) The gets Function;
+        7) Annex K Bounds-Checking Interfaces: gets_s, strcpy_s;
+        8) Runtime Constraints;
+   Pages: 141 - 143 */
 
 void string_handling_functions(void);
 void Strlen(void);
@@ -38,22 +36,20 @@ int main(void)
 void string_handling_functions(void)
 {
     /* All string-handling functions are declared in <string.h> and <wchar.h> */
-    /* These functions are disliked by many, but if you know what you're doing 
-     * Especially, if you are making sure all array bounds and sizes are taken care of,
-     * Terminating null characters are added, etc.
-     *
-     * When creating functions like those, either check everything before entering them,
-     * Or inside them before they perform their task. But not BOTH.
-     *
-     * Other than those points, they are very fast. */
+    /* These functions are disliked by many, but if you know what you're doing
+       Especially, if you are making sure all array bounds and sizes are taken care of,
+       Terminating null characters are added, etc.
+       When creating functions like those, either check everything before entering them,
+       Or inside them before they perform their task. But not BOTH.
+       Other than those points, they are very fast. */
 
     /* The most C-like approach is to let the caller of a function perform all checks,
-     * And the callee do its job. Preforming checks on both ends is redundant affects performance */
+       And the callee do its job. Preforming checks on both ends is redundant affects performance */
 
     /* The most space-efficient approach is to let the callee validate its arguments
-     * And handle possible errors. This way, the aforementioned checks are peformed in 1 place
-     * Moreover, we no longer care if arguments are valid or not
-     * This approach is also less time-efficient, overloads the callee functions (a lot of checks) */
+       And handle possible errors. This way, the aforementioned checks are peformed in 1 place
+       Moreover, we no longer care if arguments are valid or not
+       This approach is also less time-efficient, overloads the callee functions (a lot of checks) */
 
     Strlen();
     Strcpy();
@@ -64,7 +60,7 @@ void string_handling_functions(void)
 void Strcat(void)
 {
     /* Most strings-handling functions return a pointer to the passed argument
-     * Consequently, you can use this feature to nest string functions */
+       Consequently, you can use this feature to nest string functions */
     char full[128] = {0}; // assuming 128 bytes are enough
     strcat(strcat(strcat(strcat(strcpy(full, "Alexander"), " "), "Alexandrovich"), " "), "Petrov");
 
@@ -72,14 +68,14 @@ void Strcat(void)
 
     /* The downside of strcat(), though, is that it begins scanning from the start, which makes multiple concatenations costly */
 
-    /* memccpy() is created to remedy unnecessary scanning 
-     * Scan src until c is found, or return NULL */
-    /* Copy at most n bytes of src into dest 
-     * Return pointer to the element after 'c' */
+    /* memccpy() is created to remedy unnecessary scanning
+       Scan src until c is found, or return NULL */
+    /* Copy at most n bytes of src into dest
+       Return pointer to the element after 'c' */
     memset(full, 0, sizeof(full));
 
     /* This is a carbon copy of the above example, Use intermediary pointer to correctly calculate the remaning free size of string full, though.
-     * See example  https://developers.redhat.com/blog/2019/08/12/efficient-string-copying-and-concatenation-in-c#attempts_to_overcome_limitations */
+       See example  https://developers.redhat.com/blog/2019/08/12/efficient-string-copying-and-concatenation-in-c#attempts_to_overcome_limitations */
     memccpy(((char *)memccpy(((char *)memccpy(full, "Alexander ", '\0', sizeof(full))) - 1 , "Alexandrovich ", '\0', sizeof(full))) - 1, "Petrov", '\0', sizeof(full));
     printf("(memccpy) full = %s\n", full);
 
@@ -97,7 +93,7 @@ void Memcpy(void)
     char str[100] = "Here comes the sun";
     size_t size = (strlen(str) + 1) * sizeof(*str); // actual size
     char *dest = (char *) malloc(size); // +1 to account for null character, thus yielding the size
-    
+
     if (dest) { // checking for NULL pointer before entering strcpy()
         _memcpy(dest, str, size);
         printf("memcpy-ed dest = %s\n", dest);
@@ -140,14 +136,14 @@ void Strlen(void)
 }
 
 /* strcpy has no error-checking mechanisms
- * (NULL pointer, no NULL character, the size of destination object, etc.)
- * And it's not its responsibility */
+   (NULL pointer, no NULL character, the size of destination object, etc.)
+   And it's not its responsibility */
 void Strcpy(void)
 {
     char str[100] = "Here comes the sun";
     size_t str_size = strlen(str) + 1; // actual size
     char *dest = (char *) malloc(str_size); // +1 to account for null character, thus yielding the size
-    
+
     if (dest) { // checking for NULL pointer before entering strcpy()
         _strcpy(dest, str);
     }
@@ -164,7 +160,7 @@ char *_strcpy(char *dest, char *src)
 }
 
 /* strlen doesn't check if str is NULL, nor is it its responsibility to do so.
- * The burden of parameter checking falls on the shoulders of the caller */
+   The burden of parameter checking falls on the shoulders of the caller */
 size_t _strlen(char *str)
 {
     const char *s;
@@ -182,3 +178,4 @@ size_t _wcslen(wchar_t *str)
 
     return s - str;
 }
+

@@ -2,14 +2,12 @@
 #include <stdlib.h>
 #include <limits.h>
 
-/*  
-    Chapter 3: Arithmetiic Types
-        Subchapter: Signed Integers
-            1) Representation;
-            2) Overflow;
-            3) Integer Constants;
-    pages: 40 - 45
-*/
+/* Chapter 3: Arithmetiic Types
+    Subchapter: Signed Integers
+        1) Representation;
+        2) Overflow;
+        3) Integer Constants;
+   Pages: 40 - 45 */
 
 void signed_integers(void);
 void integer_overflow(void);
@@ -33,16 +31,13 @@ int main(void)
 void integer_suffix(void)
 {
     /* Aditionally append a suffix to specify the type of a constant integer */
-    /*
-     * U - unsigned
-     * L - signed long
-     * LL - signed long long
-     *
-     * They can be used together too.
-     * */
+    /* U - unsigned
+       L - signed long
+       LL - signed long long
+       They can be used together too. */
 
-    /* if integer constant is suffix-appended and isn't of the required type, 
-     * It may be implicitly promoted */
+    /* if integer constant is suffix-appended and isn't of the required type,
+       It may be implicitly promoted */
     unsigned int ui = 71U;
     signed long int sli = 9223372036854775807U;
     unsigned long long int ull = 18446744073709551615ULL;
@@ -51,14 +46,14 @@ void integer_suffix(void)
 void integer_constants(void)
 {
     /* Integer constans or integer literals are constants we use
-     * To introduce particular integer values into a program */
+       To introduce particular integer values into a program */
 
     /* Integer constans are just values in their raw form: 1, 0x25, 0777, etc. */
 
     /* There are 3 kinds of integer constans:
-     * 1) decimal constants; (starts with a non-zero digit)
-     * 2) octal constants; (starts with 0)
-     * 3) hexidecimal constants  (starts with 0x/0X */
+        1) decimal constants; (starts with a non-zero digit)
+        2) octal constants; (starts with 0)
+        3) hexidecimal constants  (starts with 0x/0X */
 
     /* Decimal constants */
     unsigned int ui = 71;
@@ -81,10 +76,9 @@ void signed_integers(void)
 
     /* The most popular way of representation of signed values is 2's complement. */
     /* To turn 127 into -127, do the following:
-     * 1) Take One's complement (invert all bits);
-     * 2) Add 1 to the result
-     * 01111111 -> 10000000 + 1 -> 10000001
-     * */
+        1) Take One's complement (invert all bits);
+        2) Add 1 to the result
+       01111111 -> 10000000 + 1 -> 10000001 */
     int i = 127;
     i = ~i;
     i += 1;
@@ -94,7 +88,7 @@ void signed_integers(void)
     i = ~i;
     /* 00000000 -> 11111111 + 1 -> 00000000 */
     printf("i = %d\n", i + 1); // 0
-    
+
     /* The range of signed integer types is from -2^(N -1) to 2^(N - 1) - 1 */
     printf("CHAR_MIN = %u, CHAR_MAX = %u\n", CHAR_MIN, CHAR_MAX); // 10000000 - 011111111
 }
@@ -131,3 +125,4 @@ void integer_overflow(void)
 recover:
     return;
 }
+

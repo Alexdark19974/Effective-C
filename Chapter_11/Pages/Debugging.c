@@ -5,11 +5,9 @@
 #include <errno.h>
 #include <malloc.h>
 
-/*
-    Chapter 11: Debugging, Testing, and Analysis
-       Subchapter: Debugging
-    Pages: 208 - 211
-*/
+/* Chapter 11: Debugging, Testing, and Analysis
+    Subchapter: Debugging
+   Pages: 208 - 211 */
 
 /* Compile with -Og -g3 to obtain the debugging information
  * And debug with gdb to explore the code */
@@ -51,3 +49,4 @@ int main(void) {
     print_error(ENOMEM);
     exit(1);
 }
+

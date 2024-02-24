@@ -1,4 +1,5 @@
 #include "common.h"
+#include "debug.h"
 #include "./include/redirect_internals.h"
 #include <string.h>
 
@@ -182,3 +183,4 @@ close_file_2:
 fail:
     return status;
 }
+

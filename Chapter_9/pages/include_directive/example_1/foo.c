@@ -1,6 +1,5 @@
 #include "bar.h"
 
-
 /* During preprocessing, the contents of bar.h are included in this file */
 int main(void)
 {
@@ -12,3 +11,4 @@ int func(void)
 {
     return 0;
 }
+

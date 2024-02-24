@@ -3,15 +3,13 @@
 #include <ctype.h>
 #include <limits.h>
 
-/* 
-    Chapter 5: Flow Control
-        Subchapter: Jump Statements
-            1) The goto-Statement;
-            2) The continue-Statement;
-            3) The reak-statement;
-            4) The return statement;
-    Pages: 93 - 97
-*/
+/* Chapter 5: Flow Control
+    Subchapter: Jump Statements
+        1) The goto-Statement;
+        2) The continue-Statement;
+        3) The reak-statement;
+        4) The return statement;
+   Pages: 93 - 97 */
 
 typedef struct object_t {
     char str[256];
@@ -23,7 +21,7 @@ int do_something(void)
     object_t *obj = NULL;
 
     int ret_val = 0; // Initially assume a successful return value
-    
+
     /* The resources allocated will be released following the "LIFO" order */
     /* alloc 1, 2, 3 -> dealloc 3, 2, 1 */
     /* in this example, goto-s simplify error processing */
@@ -63,13 +61,13 @@ FAIL_FILE1:
 void goto_statement(void)
 {
     /* Excessive use of goto-statements may lead to spaghetti code 
-     * Meaning that jumping up and down the sections of code 
-     * Make code harder to read and follow */
+       Meaning that jumping up and down the sections of code
+       Make code harder to read and follow */
 
     /* Some of the "clean" ways to use goto-statement:
-     * 1) exiting the nested loops;
-     * 2) using them to process errors, esp. if expressions are nested;
-     * 3) avoid excessive use of if-else statements */
+       1) exiting the nested loops;
+       2) using them to process errors, esp. if expressions are nested;
+       3) avoid excessive use of if-else statements */
 
     if (0 == do_something()) {
         fprintf(stdout, "Did something.\n");
@@ -81,7 +79,7 @@ void goto_statement(void)
 void continue_statement(void)
 {
     /* continue statement provides a jump to the end of the loop body
-     * Regardless of code following the continue statement */
+       Regardless of code following the continue statement */
 
     for (int i = 0; i < 10; ++i) {
         if (i == 5) {
@@ -146,7 +144,7 @@ int sum(int x, int y, int z)
 void return_statement(void)
 {
     /* return statement terminates execution of the current function 
-     * and returns control to its caller */
+       and returns control to its caller */
     /* function may have 0 or more return statement */
 
     printf("%d\n", sum(10, 15, 20));
@@ -155,8 +153,8 @@ void return_statement(void)
 int main(void)
 {
     /* Jump statements perform an unconditional jump / transfer
-     * To another section of the same function
-     * When encountered */
+       To another section of the same function
+       When encountered */
 
     goto_statement();
 
@@ -168,3 +166,4 @@ int main(void)
 
     return EXIT_SUCCESS; // return 0 to be evaluated as successful termination
 }
+

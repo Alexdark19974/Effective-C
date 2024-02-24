@@ -7,3 +7,4 @@
 #include "baz.h" // contents of the header file will be included here
 
 int func(void); // declaration of function with func identifier
+

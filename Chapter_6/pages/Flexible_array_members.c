@@ -4,18 +4,15 @@
 #include <malloc.h>
 #include <errno.h>
 
-/* 
-    Chapter 6: Dynamically Allocated Memory
+/* Chapter 6: Dynamically Allocated Memory
         Subchapter: Flexible Array Members (FLAs)
     Pages: 110 - 111
-    
     Useful sources:
         1) https://stackoverflow.com/questions/3711233/is-the-struct-hack-technically-undefined-behavior
         2) https://gcc.gnu.org/onlinedocs/gcc-4.5.0/gcc/Zero-Length.html#Zero-Length
         3) https://stackoverflow.com/questions/9722632/what-happens-if-i-define-a-0-size-array-in-c-c
         4) https://tonywearme.wordpress.com/2011/07/26/c-struct-hack/
-        5) https://www.kernel.org/doc/html/v5.16/process/deprecated.html#zero-length-and-one-element-arrays
-*/
+        5) https://www.kernel.org/doc/html/v5.16/process/deprecated.html#zero-length-and-one-element-arrays */
 
 void flexible_array_members(void);
 
@@ -33,7 +30,7 @@ typedef struct {
 
 void *func(size_t array_size)
 {
-    /*Do NOT access array member unless you explicitly allocated memory for it (undefined behavior) */
+    /* Do NOT access array member unless you explicitly allocated memory for it (undefined behavior) */
     widget *p = (widget *)malloc(sizeof(widget) + sizeof(int) * array_size); // beware of integer overflow
     if (p == NULL) {
         return NULL;
@@ -74,3 +71,4 @@ void flexible_array_members(void)
     free(p);
     p = NULL;
 }
+

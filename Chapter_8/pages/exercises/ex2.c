@@ -21,8 +21,8 @@ static bool debug = false;
 #endif
 
 /* Exercise 2: Write a program that can take redirect an arbitary number of '|' terminated by '<' or '>' or using predefined streams ".
- * Support redirection of standard input/output (< and > ) operations too
- * Example: echo "Hello Robert" | sed "s/Hello/Hi/" | sed "s/Robert/robot/" **/
+   Support redirection of standard input/output (< and > ) operations too
+   Example: echo "Hello Robert" | sed "s/Hello/Hi/" | sed "s/Robert/robot/" */
 
 #define IS_REDIRECT(x) ((x) == '>' || (x) == '<')
 #define IS_FILE_AS_STDIN(x) ((x) == '<')

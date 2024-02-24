@@ -2,16 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-    Chapter 2: Object, Functions, and Types
-        Subchapter: Derived Types
-            1) Pointer Types;
-            2) Arrays;
-            3) Structs;
-            4) Unions;
-            5) Functions;
-    Pages: 21 - 24
-*/
+/* Chapter 2: Object, Functions, and Types
+    Subchapter: Derived Types
+        1) Pointer Types;
+        2) Arrays;
+        3) Structs;
+        4) Unions;
+        5) Functions;
+   Pages: 21 - 24 */
 
 /* struct sigrecord has 4 fields: 1 - 4 bytes; 2 - 20 bytes; 3 - 100 bytes */
 struct sigrecord {
@@ -30,12 +28,12 @@ void unions(void);
 int main(int argc, char **argv)
 {
     /* Derived types are the ones constructed from other types:
-     * 1) Pointers;
-     * 2) Arrays;
-     * 3) Functions;
-     * 4) Typedefs;
-     * 5) Structures;
-     * 6) Unions; */
+        1) Pointers;
+        2) Arrays;
+        3) Functions;
+        4) Typedefs;
+        5) Structures;
+        6) Unions; */
 
     pointer_types();
     arrays(argc, argv);
@@ -54,9 +52,9 @@ union {
         int type;
         int intnode;
     } ni;
-    /* struct nf inside union u 
-     * can pack both struct n and struct ni thus,
-     * using additional padding, making it 16 bytes */
+    /* struct nf inside union u
+       can pack both struct n and struct ni thus,
+       using additional padding, making it 16 bytes */
     struct {
           int type;
           char pad[4]; // the size of union must be a multiple of its largest member (8 bytes)
@@ -71,12 +69,11 @@ void unions(void)
     /* Members of a union share the same memory space */
 
     /* In fact, there is only 1 structure in our union:
-     * it can be either: ni or nf;
-     * 1) n struct can be packed into ni;
-     * 2) ni can be packed into nf;
-     * 3) nf has the largest member;
-     * 4) 12 bytes + 4 bytes of padding;
-     * */
+        it can be either: ni or nf;
+        1) n struct can be packed into ni;
+        2) ni can be packed into nf;
+        3) nf has the largest member;
+        4) 12 bytes + 4 bytes of padding; */
     printf("size of u node is %lu\n", sizeof(u));
     u.nf.type = 0;
     u.nf.doublenode =12384234234234.5;
@@ -122,11 +119,9 @@ void typedefs(void)
     typedef unsigned int uint_type; // uint_type is an alias for unsigned int
     typedef signed char schar_type, *schar_p, (*fp)(void);
     typedef unsigned int (*ptr)(int, int, int);
-    /*
-     * 1) schar_type is an alias for signed char;
-     * 2) schar_p is an  alias for signed char *;
-     * 3) fp is an alias for signed char (*)(void);
-     * */
+    /* 1) schar_type is an alias for signed char;
+       2) schar_p is an  alias for signed char *;
+       3) fp is an alias for signed char (*)(void); */
     uint_type i = 0;
     schar_type c = 'a';
     schar_p cPtr = NULL;
@@ -137,7 +132,7 @@ void typedefs(void)
 void pointer_types(void)
 {
     /* Type of a pointer is derived from the type of object or function
-     * it points to, which is a referenced type */
+       it points to, which is a referenced type */
 
     int *ip; // (*) is not an operator but a part of declaration of pointer type
     char *cp;
@@ -172,7 +167,7 @@ void from_0_to_9(void)
 void arrays(int argc, char **argv)
 {
     /* array - a contiguously allocated sequence of objects
-     * That all have the same element type */
+       That all have the same element type */
 
     unsigned int i = 0;
     unsigned int j = 0;
@@ -189,11 +184,11 @@ void arrays(int argc, char **argv)
 
     /* *(arr + i) */
     /* 1) arr is converted to a pointer to the initial array of 5 elements of type int
-     *    Starting at arr[i]: arr;
-     * 2) i is scaled to the type of arr by multiplying i by the size of one array of
-     *    5 int objects: i * (sizeof(*arr)) = 20
-     * 3) The results from step 1 and 2 are added: (arr + (i * sizeof(*arr)))
-     * 4) Indirection is applied to the result to produce an array of 5 elements of type int: *(arr +i) */
+          Starting at arr[i]: arr;
+       2) i is scaled to the type of arr by multiplying i by the size of one array of
+          5 int objects: i * (sizeof(*arr)) = 20
+       3) The results from step 1 and 2 are added: (arr + (i * sizeof(*arr)))
+       4) Indirection is applied to the result to produce an array of 5 elements of type int: *(arr +i) */
     puts("------------------");
     printf("arr =%p\n", (void *) arr);
     printf("arr =%p\n", (void *) *arr);
@@ -205,3 +200,4 @@ void arrays(int argc, char **argv)
 
     int x = arr[i][j]; // j-th element of i-th array
 }
+

@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-    Chapter 8: INPUT/OUTPUT
-        Subchapter: Reading Formatted Text Streams;
-    Pages: 162 - 165
-*/
+/* Chapter 8: INPUT/OUTPUT
+    Subchapter: Reading Formatted Text Streams;
+   Pages: 162 - 165 */
 
 int _fscanf(void);
 
@@ -36,11 +34,11 @@ int _fscanf(void)
         return EXIT_FAILURE;
     }
 
-    /* Write from stream in to 3 objects 
-     * %d - convert into decimal number;
-     * %9s - convert into string with the length of 9 
-     * %*[ \t] - supress blanks and tabs, don't store; 
-     * %99[^\n] - convert into string of length 99 up to, but not including, newline character */
+    /* Write from stream in to 3 objects
+       %d - convert into decimal number;
+       %9s - convert into string with the length of 9
+       %*[ \t] - supress blanks and tabs, don't store;
+       %99[^\n] - convert into string of length 99 up to, but not including, newline character */
     do {
         int n = fscanf(in, "%d%9s%*[ \t]%99[^\n]",
             &sigrec.signum, sigrec.signame, sigrec.sigdesc
@@ -67,3 +65,4 @@ int _fscanf(void)
     }
     return status;
 }
+

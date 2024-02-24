@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-    Chapter 8: INPUT/OUTPUT    
-        Subchapter: Reading to and Writing from Binary Streams;
-    Pages: 165 - 167
-*/
+/* Chapter 8: INPUT/OUTPUT
+    Subchapter: Reading to and Writing from Binary Streams;
+   Pages: 165 - 167 */
 
 int _fwrite(void);
 int _fread(void);
@@ -31,9 +29,9 @@ int main(void)
 
 int _fwrite(void)
 {
-    /*fwrite( const void * restrict ptr, size_t size, size_t nmemb) 
+    /* fwrite( const void *restrict ptr, size_t size, size_t nmemb)
       This Function works with binary/text streams
-      It Writes nmemb of a particular size each pointed by ptr to the stream 
+      It Writes nmemb of a particular size each pointed by ptr to the stream
       Ptr is converted to an array of unsigned char */
 
     /* fwrite() does what fputc() does using a loop */
@@ -148,12 +146,11 @@ void show_case(void)
     /* But why 0 bytes? */
     /* Well, that's why you misunderstand the relationship of sizeand nmbem arguments */
 
-    /* You need to decide what you want to read: 
-     * BUFSIZE as 1 chunk or char as BUFISIZ chunks ?
-     * In other words, 8192 as 1 chunk or 1 of 8192 small chunks
-     * The latter will return the number of bytes read, the latter only if the whole chunk is present
-     * see fread() manpage to get a better grasp of it.
-     * */
+    /* You need to decide what you want to read:
+       BUFSIZE as 1 chunk or char as BUFISIZ chunks ?
+       In other words, 8192 as 1 chunk or 1 of 8192 small chunks
+       The latter will return the number of bytes read, the latter only if the whole chunk is present
+       see fread() manpage to get a better grasp of it. */
 
     /* Second attempt */
     rewind(fp);
@@ -164,25 +161,24 @@ void show_case(void)
     printf("nbytes = %zu\n buf = %s\n", nbytes, buf);
 
     /* Because, previously, you working with structures that have their own quirks such as padding, etc.
-     * Moreover, the structures contained integers, which, in the text file, are just a number of bytes */
-    /* So the data will not be fully in text-like format because it's raw data.*/
+       Moreover, the structures contained integers, which, in the text file, are just a number of bytes
+       So the data will not be fully in text-like format because it's raw data.*/
 
     /* By the way, endianess here matters too:
-     * Imagine another machine with different endianess reading your raw file and
-     * Trying to store it in the same structure...*/
+       Imagine another machine with different endianess reading your raw file and
+       Trying to store it in the same structure...*/
 
-    /*Let's actually read a part of buf char after char and display them */
+    /* Let's actually read a part of buf char after char and display them */
     for (int i = 0; i < 15; i++) {
         putchar(buf[i]);
     }
 
-    /* 
-     * You should be able to see some data that is human-readable 
-     * This is your char data, not paddings or the integers or anything else.
-     * */
+    /* You should be able to see some data that is human-readable
+       This is your char data, not paddings or the integers or anything else. */
 
-    /* By the way, the data from the 1st attempt actually was written to buf 
-     * The funcitons just failed to read the whole chunk of BUFSIZ in 1 go. */
+    /* By the way, the data from the 1st attempt actually was written to buf
+       The funcitons just failed to read the whole chunk of BUFSIZ in 1 go. */
+
     memset(buf, 0, sizeof(buf));
     rewind(fp);
 
@@ -195,9 +191,8 @@ void show_case(void)
         putchar(buf[i]);
     }
 
-    /* You see? So your main fuckup was the confusion of size and nmbem in fread()/fwrite() 
-     * And the attempt to store and display data saved as struct previously as an array of chars */
-
+    /* You see? So your main fuckup was the confusion of size and nmbem in fread()/fwrite()
+       And the attempt to store and display data saved as struct previously as an array of chars */
 
     /* Third attempt (the last one) */
     sigrecord sigrec;
@@ -213,11 +208,11 @@ void show_case(void)
             " Pos = %ld\n nbytes = %zu\n Signal\n number = %d\n name = %s\n description = %s\n\n",
             ftell(fp), nbytes, sigrec.signum, sigrec.signame, sigrec.sigdesc
     ); // one element of sizeof(sigrec) has been successfully read and stored in sigrec
-       
+
     /* nmbemb != size (if it's true, then we deal with bytes) */
 
     /* The key takeaway: think what you do, and before that, read documentation and then think again.
-     * It's C language, nobody is going to come to your rescue. */
+       It's C language, nobody is going to come to your rescue. */
 
 close_files:
 
@@ -226,3 +221,4 @@ close_files:
         exit(EXIT_FAILURE);
     }
 }
+

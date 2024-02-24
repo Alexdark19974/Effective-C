@@ -3,11 +3,9 @@
 #include <stddef.h>
 #include <limits.h>
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: sizeof Operator
-    Page: 67
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: sizeof Operator
+   Page: 67 */
 
 int main(void)
 {
@@ -29,3 +27,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+

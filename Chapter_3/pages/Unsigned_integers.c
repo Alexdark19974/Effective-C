@@ -2,18 +2,15 @@
 #include <limits.h>
 #include <unistd.h>
 
-/*  
-    Chapter 3: Arithmetiic Types
-        Subchapter: Integers
-            1) Padding and Precision;
-            2) The <limits.h> Header File;
-            3) Declaring Integers (a separate file "Integer_declaration");
-            4) Unsigned Integers;
-            5) Representation;
-            6) Wraparound;
-    pages: 36 - 40
-*/
-
+/* Chapter 3: Arithmetiic Types
+    Subchapter: Integers
+        1) Padding and Precision;
+        2) The <limits.h> Header File;
+        3) Declaring Integers (a separate file "Integer_declaration");
+        4) Unsigned Integers;
+        5) Representation;
+        6) Wraparound;
+   Pages: 36 - 40 */
 
 void unsigned_integers(void);
 void forever_loop(void);
@@ -41,14 +38,14 @@ void negative(void)
 void wraparound(void)
 {
     /* Wraparound occurs when performing arithmetic operations
-     * That result in values that are less than 0 or more than 2^N -1
-     * The result of such overlow is that the value wraps around:
-     * To the largest value of unsigned type if less than 0 or
-     * To the smallest value of unsgined type if more than U_MAX */
+       That result in values that are less than 0 or more than 2^N -1
+       The result of such overlow is that the value wraps around:
+       To the largest value of unsigned type if less than 0 or
+       To the smallest value of unsgined type if more than U_MAX */
 
     unsigned int ui = UINT_MAX; // 4.294.967.295 on x86
-    /* Wraparound is a well-defined behavior, but more often than not, 
-     * It is likely to be an error in your program */
+    /* Wraparound is a well-defined behavior, but more often than not,
+       It is likely to be an error in your program */
     ui++; // wraps around to 0
     printf("ui = %u\n", ui); // ui is 0
     ui--; // wraps around to UINT_MAX
@@ -58,7 +55,7 @@ void wraparound(void)
 
     /* Positive wraparound: buggy summation */
     unsigned int sum = 1;
-#if 0    
+#if 0
     if (sum + ui > UINT_MAX) // wraparound so this condition is faulty
 #else
     if (ui > UINT_MAX - sum) // will never wrap around
@@ -89,10 +86,8 @@ void unsigned_integers(void)
 
     /* Representation */
     /* Unsigned integer types apply pure binary system:
-     * the LSB has the weight 2^0, then next bit is 2^1, etc.
-     *
-     * The value of the binary number is the sum of all the weights for the set bits
-     * */
+       the LSB has the weight 2^0, then next bit is 2^1, etc.
+       The value of the binary number is the sum of all the weights for the set bits */
     printf("0x%1X 0x%1X 0x%1X 0x%1X\n",
             0x0,
             0x1,    // 2^0 = 1
@@ -101,9 +96,9 @@ void unsigned_integers(void)
 
     /* Unsigned integers don't have the sign bit so the precision of the value is 1 bit greater */
     /* The range of unsigned integers depends on their width which is
-     * 2^N -1, where N - width 
-     * For example, UINT_MAX for x86 architecture is 2^32 - 1
-     * The width of unsinged int is from 0 to 2^32 - 1 */
+       2^N -1, where N - width
+       For example, UINT_MAX for x86 architecture is 2^32 - 1
+       The width of unsinged int is from 0 to 2^32 - 1 */
 }
 
 void forever_loop(void)
@@ -118,3 +113,4 @@ void forever_loop(void)
         sleep(1);
     }
 }
+

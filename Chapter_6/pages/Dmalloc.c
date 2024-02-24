@@ -6,12 +6,10 @@
 #include "dmalloc.h"
 #endif
 
-/*
-    Chapter 6: Dynamically Allocated Memory
-        Subchapter: Debugging Allocated Storage Problems
+/* Chapter 6: Dynamically Allocated Memory
+    Subchapter: Debugging Allocated Storage Problems
         1) Dmalloc;
-    Pages: 115 - 116
-*/
+   Pages: 115 - 116 */
 
 void usage(char *msg) {
     fprintf(stderr, "%s", msg);
@@ -21,10 +19,8 @@ void usage(char *msg) {
 
 int main(int argc, char *argv[]) {
 
-/* 
-    dmalloc library replaces malloc, calloc, realloc, free, and other memory management features 
-    With routines that provide debugging facilities that you can configure at runtime 
-*/
+/* dmalloc library replaces malloc, calloc, realloc, free, and other memory management features
+    With routines that provide debugging facilities that you can configure at runtime  */
 
     if (argc != 3 && argc != 4) {
         /* error message won't be more than 80 chars */
@@ -41,3 +37,4 @@ int main(int argc, char *argv[]) {
 //---snip---
     exit(EXIT_SUCCESS);
 }
+

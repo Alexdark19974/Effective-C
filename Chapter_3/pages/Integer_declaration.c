@@ -40,3 +40,4 @@ void declare_integers(void)
         signed char sc; // signed is required
     }
 }
+

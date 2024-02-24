@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: Increment and Decrement Operators
-    Page: 61
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: Increment and Decrement Operators
+   Page: 61 */
 
 int main(void)
 {
@@ -21,3 +19,4 @@ int main(void)
 
      return EXIT_SUCCESS;
 }
+

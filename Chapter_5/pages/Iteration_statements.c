@@ -4,11 +4,9 @@
 #include <stdbool.h>
 #include <limits.h>
 
-/* 
-    Chapter 5: Flow Control
-        Subchapter: Interation Statements: While, Do-While and For statements
-    Pages: 89 - 92
-*/
+/* Chapter 5: Flow Control
+    Subchapter: Interation Statements: While, Do-While and For statements
+   Pages: 89 - 92 */
 
 void do_while_example(void)
 {
@@ -78,7 +76,7 @@ void *_memset(void *dest, int val, size_t n)
 #endif
 #endif
 
-    /*n == 0, then while exits, and n is decremented as a side effect */
+    /* n == 0, then while exits, and n is decremented as a side effect */
     printf("n = %lu\n", n); // will print ULONG_MAX due to wraparound
     return dest;
 }
@@ -88,8 +86,8 @@ void *__memset(void *dest, int val, size_t n)
     unsigned char *ptr = (unsigned char *)dest;
 
     /* 1) clause 1 declares and initializes a loop counter once, when for-loop is entered;
-     * 2) expression 2 is the controlling expresssion that is evaluated before executing the loop body;
-     * 3) expression 3 performs some useful actions, usually incrementing the loop counter */
+       2) expression 2 is the controlling expresssion that is evaluated before executing the loop body;
+       3) expression 3 performs some useful actions, usually incrementing the loop counter */
 
     for (/* clause 1*/size_t i = 0; /*expression 2*/ i < n; /*expression 3*/ ++i) {
         /* body */
@@ -99,14 +97,11 @@ void *__memset(void *dest, int val, size_t n)
     }
 
     /* for-loop is analagous to while-loop: */
-    /*
-     * size_t i = 0; // clause 1
-     * while(i < n) { // expression 2
-     *      *(ptr + i) = val;
-     *
-     *      i++; // expression 3
-     * }
-     * */
+    /* size_t i = 0; // clause 1
+       while(i < n) { // expression 2
+            *(ptr + i) = val;
+            i++; // expression 3
+       } */
     return dest;
 }
 
@@ -141,10 +136,9 @@ void show_misleading_for_loop(void)
     /* This is erroneous because we're accessing freed memory */
     /* 1) head is assigned to p */
     /* 2) controlling expression is evaluated \
-     * 3) p is freed
-     * 4) expression tries to assign field of p to p by accessing to p that has been freed
-     * 5) CRASH
-     * */
+       3) p is freed
+       4) expression tries to assign field of p to p by accessing to p that has been freed
+       5) CRASH */
 #if 0
     for (/* clause 1*/p = head; /*expression 2*/p != NULL; /*expression 3*/ p = p->next) {
         /* body */
@@ -205,3 +199,4 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
+

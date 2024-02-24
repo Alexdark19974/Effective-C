@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    Chapter 4: Expressions and Operators
-        Subchapter: Operator Precendence and Assoiciativity
-    Page: 62
-*/
+/* Chapter 4: Expressions and Operators
+    Subchapter: Operator Precendence and Assoiciativity
+   Page: 62 */
 
 void show_misleading_precedence(void)
 {
@@ -26,22 +24,22 @@ void show_misleading_precedence(void)
 
     printf("abc is %s\n xyz is %s\n", abc, xyz);
 
-    /* When making such complex expressions as *p++ or *++p or ++*p 
-     * Always keep in mind precedence and associativity */
+    /* When making such complex expressions as *p++ or *++p or ++*p
+       Always keep in mind precedence and associativity */
 
     puts("---------------- misleading precedence ----------------");
 }
 
 int main(void)
 {
-    /* Operator precedence is a collection of rules that dictate 
-     * The order in which operations are performed in a given expression */
+    /* Operator precedence is a collection of rules that dictate
+       The order in which operations are performed in a given expression */
     /* Associativity determines how operators of the same precedence are grouped
-     * When no explicit parentheses are uses:
-     * 1) Implicit introduction of parentheses;
-     * 2) Some operators are left-associated or right-associated 
-     * 3) If 2 operatores have the same precedence and association, 
-     *    They are evaluate from left to right. */
+       When no explicit parentheses are uses:
+        1) Implicit introduction of parentheses;
+        2) Some operators are left-associated or right-associated
+        3) If 2 operatores have the same precedence and association,
+       They are evaluate from left to right. */
 
     int a = 0;
     int b = 1;
@@ -53,7 +51,7 @@ int main(void)
 
     // additive operator is left-associated
     printf("sum = %d\n", a + b + c); // identical to ((a + b) + c)
-    
+
     int i = 0;
 
     // multiplication operator has higher precedence than addition operator
@@ -66,3 +64,4 @@ int main(void)
 
      return EXIT_SUCCESS;
 }
+

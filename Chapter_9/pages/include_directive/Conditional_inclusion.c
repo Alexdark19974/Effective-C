@@ -1,12 +1,10 @@
 #include "./example_1/bar.h"
 
-/*
-    Chapter 9: Preprocessor
-        Subchapter: Conditional Inclusion
-            1) Generating errors (a separate file "generating errors.c");
-            2) Using Header Guards;
-    Pages: 172 - 175
-*/
+/* Chapter 9: Preprocessor
+    Subchapter: Conditional Inclusion
+        1) Generating errors (a separate file "generating errors.c");
+        2) Using Header Guards;
+    Pages: 172 - 175 */
 
 // 1)
 #if defined (WIN32) // when defined (WIN32) is evaluted to nonzero, the #if branch is processed, and the rest are not
@@ -20,7 +18,7 @@
 #endif
 #endif // the termination of conditional code inclusion
 
-/* You cannot use a predicate condition to perform operations such as function invocation, etc. 
+/* You cannot use a predicate condition to perform operations such as function invocation, etc.
  * It is not the responsibility of the preprocessor. */
 
 // 2)
@@ -56,10 +54,11 @@
 
 int main(void)
 {
-    /* Conditional inclusion allows us to include headers and define macros 
-     * Or ignore them altogether depending on the result of a predicate condition 
+    /* Conditional inclusion allows us to include headers and define macros
+     * Or ignore them altogether depending on the result of a predicate condition
      * A predicate condition is a combination of #if / #elif / #else and defined operator
      * Followed by #endif to determine if a macro identifier is defined, thus executing a section of code while ignoring the other. */
 
     return 0;
 }
+

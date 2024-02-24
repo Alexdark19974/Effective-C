@@ -6,14 +6,12 @@
 #include <stddef.h>
 #include <assert.h>
 
-/*
-    Chapter 2: Object, Functions, and Types
-        Subchapter:
-            1) Type Definitions;
-            2) Struct;
-            3) Union;
-    Pages: 28 - 30
-*/
+/* Chapter 2: Object, Functions, and Types
+    Subchapter:
+        1) Type Definitions;
+        2) Struct;
+        3) Union;
+   Pages: 28 - 30 */
 
 typedef unsigned int uint;
 typedef union sigs sigs_u; // sigs_u is an alias for union sigs
@@ -68,7 +66,7 @@ void init_signals(void)
 {
     size_t offset = 0;
     __sighandler_t ptr = NULL;
-    
+
     {
         signals[0].sigrecord.signum = SIGINT;
         signals[0].sigrecord.sig_handler = signal_handler;
@@ -123,3 +121,4 @@ int main(void) {
 
     return EXIT_SUCCESS;
 }
+
